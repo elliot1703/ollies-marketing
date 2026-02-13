@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Client Portal — Ollie's Marketing</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  /* ═══════════════════════════════════════════════
+     OLLIE'S MARKETING — CLIENT PORTAL
+     Pattern: Self-contained HTML (Venture 310 model)
+     ═══════════════════════════════════════════════ */
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    /* Brand Colours */
+    --brown: #6B3A1E;
+    --cream: #FBF5EE;
+    --espresso: #2A1810;
+    --stone: #E8DDD3;
+    --terracotta: #C1553A;
+    --timber: #8B6F5C;
+    --linen: #F3EBE2;
+    --charcoal: #3D2E24;
+
+    /* Typography */
+    --font-display: 'Sora', system-ui, sans-serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+
+    /* Spacing */
+    --section-padding: clamp(3rem, 6vw, 5rem);
+    --side-padding: clamp(1.5rem, 6vw, 6rem);
+    --max-width: 1000px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--espresso);
+    background: var(--cream);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    font-size: clamp(1rem, 1.1vw, 1.125rem);
+    line-height: 1.6;
+  }
+
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--side-padding);
+  }
+
+  /* ═══ LOGIN SCREEN ═══════════════════════════════ */
+  .login-screen {
+    position: fixed; inset: 0; z-index: 1000;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--brown);
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+  }
+  .login-screen.hidden {
+    opacity: 0; visibility: hidden; pointer-events: none;
+  }
+
+  .login-box {
+    text-align: center;
+    padding: 3rem 2rem;
+    max-width: 400px;
+    width: 100%;
+  }
+
+  .login-brand {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 0.5rem;
+  }
+
+  .login-subtitle {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-bottom: 3rem;
+  }
+
+  .login-field {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .login-input {
+    flex: 1;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--espresso);
+    background: var(--cream);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    padding: 0.85rem 1.25rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+  .login-input:focus {
+    border-color: var(--terracotta);
+  }
+  .login-input::placeholder {
+    color: var(--timber);
+  }
+
+  .login-btn {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--cream);
+    background: var(--terracotta);
+    border: none;
+    border-radius: 8px;
+    padding: 0.85rem 1.5rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .login-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(193, 85, 58, 0.4);
+  }
+
+  .login-error {
+    color: var(--terracotta);
+    font-size: 0.875rem;
+    min-height: 1.4em;
+    margin-bottom: 1.5rem;
+  }
+
+  .login-help {
+    font-size: 0.85rem;
+    color: var(--stone);
+    opacity: 0.7;
+  }
+  .login-help a {
+    color: var(--cream);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* ═══ DASHBOARD ══════════════════════════════════ */
+  .dashboard { display: none; }
+  .dashboard.visible { display: block; }
+
+  /* Header */
+  .portal-header {
+    background: var(--brown);
+    padding: 2.5rem 0 2rem;
+  }
+  .portal-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .portal-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1.2;
+  }
+
+  .portal-meta {
+    font-size: 0.85rem;
+    color: var(--stone);
+    text-align: right;
+  }
+
+  .portal-nav {
+    background: var(--brown);
+    border-top: 1px solid rgba(251, 245, 238, 0.1);
+    padding: 0.75rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .portal-nav .container {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+  }
+  .portal-nav a {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--cream);
+    text-decoration: none;
+    opacity: 0.6;
+    white-space: nowrap;
+    transition: opacity 0.2s ease;
+  }
+  .portal-nav a:hover { opacity: 1; }
+
+  /* ═══ SECTION TAG ════════════════════════════════ */
+  .section-tag {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 1.5rem;
+  }
+
+  /* ═══ SECTIONS ═══════════════════════════════════ */
+  .portal-section {
+    padding: var(--section-padding) 0;
+    border-bottom: 1px solid var(--stone);
+  }
+  .portal-section:last-child { border-bottom: none; }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 0.5rem;
+  }
+
+  .section-desc {
+    color: var(--timber);
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+  }
+
+  /* ═══ DELIVERABLE CARDS ═════════════════════════ */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .card {
+    background: var(--linen);
+    border-radius: 12px;
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(42, 24, 16, 0.08);
+  }
+  .card.card--upcoming {
+    opacity: 0.55;
+    pointer-events: auto;
+  }
+  .card.card--upcoming:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .card-title {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    line-height: 1.3;
+  }
+
+  .badge {
+    font-family: var(--font-display);
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.65rem;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .badge--live {
+    background: #1a7a3a;
+    color: #fff;
+  }
+  .badge--review {
+    background: #c78a20;
+    color: #fff;
+  }
+  .badge--upcoming {
+    background: var(--stone);
+    color: var(--timber);
+  }
+
+  .card-desc {
+    font-size: 0.875rem;
+    color: var(--timber);
+    line-height: 1.5;
+  }
+
+  .card-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: auto;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    border-radius: 8px;
+    padding: 0.65rem 1.25rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .btn:hover {
+    transform: translateY(-1px);
+  }
+
+  .btn--primary {
+    background: var(--terracotta);
+    color: var(--cream);
+  }
+  .btn--primary:hover {
+    box-shadow: 0 4px 12px rgba(193, 85, 58, 0.3);
+  }
+
+  .btn--ghost {
+    background: transparent;
+    color: var(--charcoal);
+    border: 1.5px solid var(--stone);
+  }
+  .btn--ghost:hover {
+    border-color: var(--charcoal);
+  }
+
+  /* ═══ FEEDBACK FORM ═════════════════════════════ */
+  .feedback-form {
+    display: none;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--stone);
+  }
+  .feedback-form.open { display: block; }
+
+  .feedback-textarea {
+    width: 100%;
+    min-height: 80px;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    color: var(--espresso);
+    background: var(--cream);
+    border: 1.5px solid var(--stone);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.2s ease;
+    margin-bottom: 0.75rem;
+  }
+  .feedback-textarea:focus {
+    border-color: var(--terracotta);
+  }
+  .feedback-textarea::placeholder {
+    color: var(--timber);
+  }
+
+  /* ═══ BRAND ASSETS ══════════════════════════════ */
+  .asset-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .asset-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    background: var(--linen);
+    border-radius: 8px;
+    gap: 1rem;
+  }
+
+  .asset-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .asset-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: var(--stone);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .asset-name {
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--charcoal);
+  }
+
+  .asset-status {
+    font-size: 0.8rem;
+    color: var(--timber);
+  }
+
+  /* ═══ ROADMAP ═══════════════════════════════════ */
+  .roadmap-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .roadmap-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--stone);
+  }
+  .roadmap-item:last-child { border-bottom: none; }
+
+  .roadmap-check {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+    font-size: 0.7rem;
+    font-weight: 700;
+  }
+  .roadmap-check--done {
+    background: #1a7a3a;
+    color: #fff;
+  }
+  .roadmap-check--pending {
+    background: transparent;
+    border: 2px solid var(--stone);
+    color: transparent;
+  }
+  .roadmap-check--waiting {
+    background: #c78a20;
+    color: #fff;
+  }
+
+  .roadmap-text {
+    font-size: 0.95rem;
+    color: var(--charcoal);
+    line-height: 1.4;
+  }
+  .roadmap-text small {
+    display: block;
+    color: var(--timber);
+    font-size: 0.8rem;
+    margin-top: 0.2rem;
+  }
+
+  .roadmap-item--done .roadmap-text {
+    color: var(--timber);
+  }
+
+  /* ═══ FOOTER ════════════════════════════════════ */
+  .portal-footer {
+    padding: 2rem 0;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--timber);
+  }
+  .portal-footer a {
+    color: var(--terracotta);
+    text-decoration: none;
+  }
+
+  /* ═══ RESPONSIVE ════════════════════════════════ */
+  @media (max-width: 768px) {
+    .portal-header .container {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .portal-meta { text-align: left; }
+    .card-grid { grid-template-columns: 1fr; }
+    .portal-nav .container { gap: 1.25rem; }
+  }
+
+  @media (max-width: 480px) {
+    .card-actions { flex-direction: column; }
+    .card-actions .btn { width: 100%; justify-content: center; }
+    .asset-item { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     LOGIN SCREEN
+     ═══════════════════════════════════════════════ -->
+<div class="login-screen" id="loginScreen">
+  <div class="login-box">
+    <div class="login-brand">[ Ollie's Marketing ]</div>
+    <div class="login-subtitle">Client Portal</div>
+    <form class="login-field" onsubmit="handleLogin(event)">
+      <input type="password" class="login-input" id="passwordInput" placeholder="Enter access code" autocomplete="off" autofocus>
+      <button type="submit" class="login-btn">Enter</button>
+    </form>
+    <div class="login-error" id="loginError"></div>
+    <div class="login-help">Need access? <a href="mailto:elliot@unpaste.co?subject=Portal access — Ollie's Marketing">Contact Elliot</a></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     DASHBOARD
+     ═══════════════════════════════════════════════ -->
+<div class="dashboard" id="dashboard">
+
+  <!-- Header -->
+  <header class="portal-header">
+    <div class="container">
+      <div>
+        <div class="portal-title">Ollie's Marketing</div>
+        <div style="font-family: var(--font-display); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--stone); margin-top: 0.35rem;">Client Portal</div>
+      </div>
+      <div class="portal-meta">
+        Last updated: 13 Feb 2026<br>
+        <a href="#" onclick="handleLogout(event)" style="color: var(--stone); font-size: 0.75rem; text-decoration: underline; text-underline-offset: 2px;">Log out</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sticky Nav -->
+  <nav class="portal-nav">
+    <div class="container">
+      <a href="#demos">Demos</a>
+      <a href="#assets">Brand Assets</a>
+      <a href="#roadmap">Roadmap</a>
+    </div>
+  </nav>
+
+  <!-- ═══ DEMO PAGES ═════════════════════════════ -->
+  <!-- DELIVERABLES START -->
+  <section class="portal-section" id="demos">
+    <div class="container">
+      <div class="section-tag">[ Demo Pages ]</div>
+      <div class="section-title">Your Deliverables</div>
+      <div class="section-desc">Click "View Demo" to see each page live. Use "Leave Feedback" to send comments directly to Elliot.</div>
+
+      <div class="card-grid">
+
+        <!-- Card: Content Engine Hub -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Content Engine — Hub Page</div>
+            <span class="badge badge--live">Live</span>
+          </div>
+          <div class="card-desc">Main landing page for the Content Engine service. Explains the model, shows pricing, and drives bookings.</div>
+          <div class="card-actions">
+            <a href="content-engine.html" target="_blank" class="btn btn--primary">View Demo</a>
+            <button class="btn btn--ghost" onclick="toggleFeedback(this)">Leave Feedback</button>
+          </div>
+          <div class="feedback-form">
+            <textarea class="feedback-textarea" placeholder="What would you change? What's missing? What do you love?" id="feedback-hub"></textarea>
+            <a class="btn btn--primary" onclick="sendFeedback('Content Engine Hub Page', 'feedback-hub')">Send to Elliot</a>
+          </div>
+        </div>
+
+        <!-- Card: Mortgage Broker Vertical -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Mortgage Broker Vertical</div>
+            <span class="badge badge--live">Live</span>
+          </div>
+          <div class="card-desc">Industry-specific landing page targeting mortgage brokers. Speaks their language, addresses their specific content challenges.</div>
+          <div class="card-actions">
+            <a href="content-engine-mortgage-brokers.html" target="_blank" class="btn btn--primary">View Demo</a>
+            <button class="btn btn--ghost" onclick="toggleFeedback(this)">Leave Feedback</button>
+          </div>
+          <div class="feedback-form">
+            <textarea class="feedback-textarea" placeholder="What would you change? What's missing? What do you love?" id="feedback-mortgage"></textarea>
+            <a class="btn btn--primary" onclick="sendFeedback('Mortgage Broker Vertical', 'feedback-mortgage')">Send to Elliot</a>
+          </div>
+        </div>
+
+        <!-- Card: Finance Broker Vertical -->
+        <div class="card card--upcoming">
+          <div class="card-header">
+            <div class="card-title">Finance Broker Vertical</div>
+            <span class="badge badge--upcoming">Upcoming</span>
+          </div>
+          <div class="card-desc">Industry-specific page for finance brokers. Same model, different language and pain points.</div>
+          <div class="card-actions">
+            <button class="btn btn--ghost" disabled style="opacity: 0.4;">Coming Soon</button>
+          </div>
+        </div>
+
+        <!-- Card: Real Estate Vertical -->
+        <div class="card card--upcoming">
+          <div class="card-header">
+            <div class="card-title">Real Estate Vertical</div>
+            <span class="badge badge--upcoming">Upcoming</span>
+          </div>
+          <div class="card-desc">Industry-specific page for real estate agents. Focused on listing content and personal brand building.</div>
+          <div class="card-actions">
+            <button class="btn btn--ghost" disabled style="opacity: 0.4;">Coming Soon</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- DELIVERABLES END -->
+
+  <!-- ═══ BRAND ASSETS ═══════════════════════════ -->
+  <section class="portal-section" id="assets">
+    <div class="container">
+      <div class="section-tag">[ Brand Assets ]</div>
+      <div class="section-title">Your Brand Kit</div>
+      <div class="section-desc">Core brand files and templates. More assets will appear here as we build them.</div>
+
+      <div class="asset-list">
+        <div class="asset-item">
+          <div class="asset-info">
+            <div class="asset-icon">&#x1f3a8;</div>
+            <div class="asset-name">Brand Guidelines</div>
+          </div>
+          <span class="asset-status">Complete</span>
+        </div>
+        <div class="asset-item">
+          <div class="asset-info">
+            <div class="asset-icon">&#x2728;</div>
+            <div class="asset-name">Logo Files</div>
+          </div>
+          <a href="mailto:elliot@unpaste.co?subject=Logo files request — Ollie's Marketing" class="btn btn--ghost" style="padding: 0.45rem 0.85rem; font-size: 0.65rem;">Request</a>
+        </div>
+        <div class="asset-item">
+          <div class="asset-info">
+            <div class="asset-icon">&#x1f4f1;</div>
+            <div class="asset-name">Social Media Templates</div>
+          </div>
+          <span class="asset-status">Upcoming</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ROADMAP ═════════════════════════════════ -->
+  <section class="portal-section" id="roadmap">
+    <div class="container">
+      <div class="section-tag">[ Project Roadmap ]</div>
+      <div class="section-title">Where We're At</div>
+      <div class="section-desc">A snapshot of what's done, what's next, and what's waiting on input.</div>
+
+      <div class="roadmap-list">
+        <div class="roadmap-item roadmap-item--done">
+          <div class="roadmap-check roadmap-check--done">&#x2713;</div>
+          <div class="roadmap-text">Market Analysis <small>Complete — competitive landscape, pricing benchmarks, positioning</small></div>
+        </div>
+        <div class="roadmap-item roadmap-item--done">
+          <div class="roadmap-check roadmap-check--done">&#x2713;</div>
+          <div class="roadmap-text">Brand Guidelines <small>Complete — colours, typography, voice, logo usage</small></div>
+        </div>
+        <div class="roadmap-item roadmap-item--done">
+          <div class="roadmap-check roadmap-check--done">&#x2713;</div>
+          <div class="roadmap-text">Content Engine Hub Page <small>Live — main service page with pricing</small></div>
+        </div>
+        <div class="roadmap-item roadmap-item--done">
+          <div class="roadmap-check roadmap-check--done">&#x2713;</div>
+          <div class="roadmap-text">Mortgage Broker Landing Page <small>Live — industry-specific vertical</small></div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-check roadmap-check--pending"></div>
+          <div class="roadmap-text">Finance Broker Landing Page <small>Upcoming — next vertical build</small></div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-check roadmap-check--pending"></div>
+          <div class="roadmap-text">Real Estate Landing Page <small>Upcoming — third vertical</small></div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-check roadmap-check--pending"></div>
+          <div class="roadmap-text">Social Media Templates <small>Upcoming — branded post/story templates</small></div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-check roadmap-check--waiting">!</div>
+          <div class="roadmap-text">Case Study: @dofinancialservices <small>Waiting on data — need results/metrics from Ollie</small></div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-check roadmap-check--waiting">!</div>
+          <div class="roadmap-text">Booking CTA Integration <small>Needs Ollie input — which booking tool to use?</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="portal-footer">
+    <div class="container">
+      Built by <a href="https://unpaste.ai" target="_blank">Unpaste</a> &middot; Questions? <a href="mailto:elliot@unpaste.co">elliot@unpaste.co</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  /* ═══════════════════════════════════════════════
+     AUTH — SHA-256 client-side password gate
+     Not real security — friction gate only
+     ═══════════════════════════════════════════════ */
+  const PASSWORD_HASH = '4e482fba4d2a46e19d965476a0737b33d773982c5dbe1dede416059ee8595d09';
+
+  async function sha256(message) {
+    const msgBuffer = new TextEncoder().encode(message);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+
+  async function handleLogin(e) {
+    e.preventDefault();
+    const input = document.getElementById('passwordInput');
+    const hash = await sha256(input.value);
+
+    if (hash === PASSWORD_HASH) {
+      sessionStorage.setItem('portal_auth', 'true');
+      showDashboard();
+    } else {
+      document.getElementById('loginError').textContent = 'Incorrect code. Try again.';
+      input.value = '';
+      input.focus();
+    }
+  }
+
+  function handleLogout(e) {
+    e.preventDefault();
+    sessionStorage.removeItem('portal_auth');
+    document.getElementById('loginScreen').classList.remove('hidden');
+    document.getElementById('dashboard').classList.remove('visible');
+    document.getElementById('passwordInput').value = '';
+    document.getElementById('loginError').textContent = '';
+  }
+
+  function showDashboard() {
+    document.getElementById('loginScreen').classList.add('hidden');
+    document.getElementById('dashboard').classList.add('visible');
+  }
+
+  // Auto-login if session exists
+  if (sessionStorage.getItem('portal_auth') === 'true') {
+    showDashboard();
+  }
+
+  /* ═══ FEEDBACK ══════════════════════════════════ */
+  function toggleFeedback(btn) {
+    const form = btn.closest('.card').querySelector('.feedback-form');
+    form.classList.toggle('open');
+    if (form.classList.contains('open')) {
+      form.querySelector('textarea').focus();
+    }
+  }
+
+  function sendFeedback(deliverable, textareaId) {
+    const textarea = document.getElementById(textareaId);
+    const body = textarea.value.trim();
+    if (!body) {
+      textarea.focus();
+      return;
+    }
+    const subject = encodeURIComponent('Feedback: ' + deliverable);
+    const mailBody = encodeURIComponent(body);
+    window.location.href = 'mailto:elliot@unpaste.co?subject=' + subject + '&body=' + mailBody;
+  }
+</script>
+
+</body>
+</html>

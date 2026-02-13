@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Content Engine — Ollie's Marketing | Turn One Conversation Into a Month of Content</title>
+<meta name="description" content="Done-for-you video podcast production that turns one filmed conversation into 15+ social media clips. Transparent pricing from $2,500/month. Brisbane content production.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  /* ═══════════════════════════════════════════════
+     OLLIE'S MARKETING — CONTENT ENGINE HUB PAGE
+     Pattern: Self-contained HTML (Venture 310 model)
+     ═══════════════════════════════════════════════ */
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    /* Brand Colours */
+    --brown: #6B3A1E;
+    --cream: #FBF5EE;
+    --espresso: #2A1810;
+    --stone: #E8DDD3;
+    --terracotta: #C1553A;
+    --timber: #8B6F5C;
+    --linen: #F3EBE2;
+    --charcoal: #3D2E24;
+
+    /* Typography */
+    --font-display: 'Sora', system-ui, sans-serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+
+    /* Spacing */
+    --section-padding: clamp(5rem, 10vw, 8rem);
+    --side-padding: clamp(1.5rem, 6vw, 6rem);
+    --max-width: 1200px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--espresso);
+    background: var(--cream);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    font-size: clamp(1rem, 1.1vw, 1.125rem);
+    line-height: 1.6;
+  }
+
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--side-padding);
+  }
+
+  /* ═══ NAVIGATION ════════════════════════════════ */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.25rem var(--side-padding);
+    background: transparent;
+    transition: background 0.4s ease, box-shadow 0.4s ease, padding 0.4s ease;
+  }
+  nav.scrolled {
+    background: rgba(251, 245, 238, 0.97);
+    box-shadow: 0 1px 0 var(--stone);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .nav-brand {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--cream);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+    transition: color 0.4s ease;
+  }
+  nav.scrolled .nav-brand { color: var(--brown); }
+
+  .nav-right { display: flex; align-items: center; gap: 2.5rem; }
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-family: var(--font-display);
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--cream); text-decoration: none;
+    opacity: 0.7; transition: opacity 0.2s ease, color 0.4s ease;
+  }
+  .nav-links a:hover { opacity: 1; }
+  nav.scrolled .nav-links a { color: var(--charcoal); }
+
+  .nav-cta {
+    font-family: var(--font-display);
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; text-decoration: none;
+    color: var(--brown); background: var(--cream);
+    padding: 0.65rem 1.4rem; border-radius: 8px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.4s ease, color 0.4s ease;
+  }
+  .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(42, 24, 16, 0.15); }
+  nav.scrolled .nav-cta { background: var(--terracotta); color: var(--cream); }
+
+  /* Mobile nav toggle */
+  .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+  .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--cream); margin: 5px 0; transition: all 0.3s ease; }
+  nav.scrolled .nav-toggle span { background: var(--charcoal); }
+
+  /* ═══ SECTION TAG ═══════════════════════════════ */
+  .section-tag {
+    font-family: var(--font-display);
+    font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 1.5rem;
+  }
+  .section-tag--light { color: var(--stone); }
+
+  /* ═══ HERO ══════════════════════════════════════ */
+  .hero {
+    min-height: 100vh;
+    background: var(--brown);
+    display: flex; align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      radial-gradient(circle at 20% 80%, rgba(193, 85, 58, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(251, 245, 238, 0.04) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .hero .container {
+    position: relative; z-index: 1;
+    padding-top: 8rem; padding-bottom: 5rem;
+  }
+  .hero-content { max-width: 800px; }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-sub {
+    font-size: clamp(1.125rem, 1.4vw, 1.3rem);
+    line-height: 1.5;
+    color: var(--stone);
+    max-width: 600px;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+
+  .btn-primary {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 0.8rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    text-decoration: none;
+    background: var(--terracotta); color: var(--cream);
+    padding: 1rem 2rem; border-radius: 8px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(193, 85, 58, 0.3); }
+
+  .btn-primary--cream {
+    background: var(--cream); color: var(--brown);
+  }
+  .btn-primary--cream:hover { box-shadow: 0 6px 20px rgba(251, 245, 238, 0.3); }
+
+  .btn-ghost {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 0.8rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    text-decoration: none;
+    color: var(--cream); border: 2px solid rgba(251, 245, 238, 0.3);
+    padding: calc(1rem - 2px) calc(2rem - 2px); border-radius: 8px;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+  .btn-ghost:hover { border-color: var(--cream); transform: translateY(-2px); }
+
+  .hero-stats {
+    display: flex; gap: 3rem; margin-top: 4rem;
+    padding-top: 2rem; border-top: 1px solid rgba(251, 245, 238, 0.1);
+  }
+  .hero-stat-number {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3vw, 2.5rem);
+    font-weight: 700; color: var(--cream);
+    line-height: 1;
+  }
+  .hero-stat-label {
+    font-size: 0.85rem; color: var(--timber);
+    margin-top: 0.5rem; line-height: 1.3;
+  }
+
+  /* ═══ HOW IT WORKS ══════════════════════════════ */
+  .how-it-works {
+    background: var(--cream);
+    padding: var(--section-padding) 0;
+  }
+
+  .how-header { max-width: 700px; margin-bottom: 4rem; }
+
+  .how-header h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700; line-height: 1.1;
+    letter-spacing: -0.02em; color: var(--espresso);
+  }
+  .how-header p {
+    margin-top: 1rem; color: var(--timber);
+    font-size: clamp(1.05rem, 1.2vw, 1.15rem);
+    max-width: 550px;
+  }
+
+  .how-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    position: relative;
+  }
+
+  /* Connecting line between steps */
+  .how-steps::before {
+    content: '';
+    position: absolute; top: 2.5rem;
+    left: calc(16.67% + 1rem); right: calc(16.67% + 1rem);
+    height: 2px; background: var(--stone);
+  }
+
+  .how-step {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    position: relative;
+  }
+  .step-number {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--brown); color: var(--cream);
+    font-family: var(--font-display); font-weight: 700; font-size: 1.25rem;
+    margin-bottom: 1.5rem; position: relative; z-index: 2;
+  }
+  .how-step h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem; font-weight: 600;
+    color: var(--espresso); margin-bottom: 0.75rem;
+  }
+  .how-step p {
+    color: var(--timber); font-size: 0.95rem; line-height: 1.5;
+  }
+
+  .how-output {
+    margin-top: 3rem;
+    background: var(--linen);
+    border-radius: 12px;
+    padding: 2rem 2.5rem;
+    display: flex; align-items: center; justify-content: center;
+    gap: 3rem; flex-wrap: wrap;
+  }
+  .how-output-item {
+    text-align: center;
+  }
+  .how-output-number {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 2.5vw, 2.25rem);
+    font-weight: 700; color: var(--terracotta);
+    line-height: 1;
+  }
+  .how-output-label {
+    font-size: 0.85rem; color: var(--timber);
+    margin-top: 0.35rem;
+  }
+
+  /* ═══ WHO IT'S FOR ══════════════════════════════ */
+  .who-its-for {
+    background: var(--brown);
+    padding: var(--section-padding) 0;
+  }
+
+  .who-header { max-width: 700px; margin-bottom: 3rem; }
+
+  .who-header h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700; line-height: 1.1;
+    letter-spacing: -0.02em; color: var(--cream);
+  }
+  .who-header p {
+    margin-top: 1rem; color: var(--stone);
+    font-size: clamp(1.05rem, 1.2vw, 1.15rem);
+  }
+
+  .vertical-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .vertical-card {
+    background: rgba(251, 245, 238, 0.06);
+    border: 1px solid rgba(251, 245, 238, 0.1);
+    border-radius: 12px;
+    padding: 2rem;
+    text-decoration: none;
+    transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+    display: block;
+  }
+  .vertical-card:hover {
+    background: rgba(251, 245, 238, 0.1);
+    border-color: rgba(251, 245, 238, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .vertical-card-tag {
+    font-family: var(--font-display);
+    font-size: 0.7rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 0.75rem;
+  }
+  .vertical-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.3rem; font-weight: 600;
+    color: var(--cream); margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+  .vertical-card p {
+    font-size: 0.9rem; color: var(--stone); line-height: 1.5;
+  }
+  .vertical-card-arrow {
+    display: inline-block; margin-top: 1rem;
+    font-family: var(--font-display);
+    font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--terracotta);
+  }
+
+  /* ═══ PRICING ═══════════════════════════════════ */
+  .pricing {
+    background: var(--cream);
+    padding: var(--section-padding) 0;
+  }
+
+  .pricing-header { max-width: 700px; margin-bottom: 3.5rem; }
+
+  .pricing-header h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700; line-height: 1.1;
+    letter-spacing: -0.02em; color: var(--espresso);
+  }
+  .pricing-header p {
+    margin-top: 1rem; color: var(--timber);
+    font-size: clamp(1.05rem, 1.2vw, 1.15rem);
+    max-width: 550px;
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .pricing-card {
+    background: var(--linen);
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    display: flex; flex-direction: column;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .pricing-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(42, 24, 16, 0.08);
+  }
+  .pricing-card--featured {
+    background: var(--brown); color: var(--cream);
+    box-shadow: 0 4px 20px rgba(42, 24, 16, 0.15);
+  }
+
+  .pricing-badge {
+    position: absolute; top: -12px; right: 24px;
+    background: var(--terracotta); color: var(--cream);
+    font-family: var(--font-display);
+    font-size: 0.65rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.4rem 1rem; border-radius: 20px;
+  }
+
+  .pricing-tier {
+    font-family: var(--font-display);
+    font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 0.5rem;
+  }
+  .pricing-card--featured .pricing-tier { color: var(--stone); }
+
+  .pricing-name {
+    font-family: var(--font-display);
+    font-size: 1.35rem; font-weight: 700;
+    color: var(--espresso);
+    margin-bottom: 1rem;
+  }
+  .pricing-card--featured .pricing-name { color: var(--cream); }
+
+  .pricing-price {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3vw, 2.5rem);
+    font-weight: 700; color: var(--espresso);
+    line-height: 1; margin-bottom: 0.25rem;
+  }
+  .pricing-card--featured .pricing-price { color: var(--cream); }
+  .pricing-period {
+    font-size: 0.85rem; color: var(--timber);
+    margin-bottom: 1.5rem;
+  }
+  .pricing-card--featured .pricing-period { color: var(--stone); }
+
+  .pricing-features {
+    list-style: none;
+    margin-bottom: 2rem;
+    flex-grow: 1;
+  }
+  .pricing-features li {
+    font-size: 0.9rem; line-height: 1.4;
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    color: var(--charcoal);
+  }
+  .pricing-card--featured .pricing-features li { color: var(--stone); }
+  .pricing-features li::before {
+    content: '✓';
+    position: absolute; left: 0;
+    color: var(--terracotta); font-weight: 700;
+  }
+  .pricing-card--featured .pricing-features li::before { color: var(--cream); }
+
+  .pricing-commitment {
+    font-size: 0.8rem; color: var(--timber);
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+  .pricing-card--featured .pricing-commitment { color: var(--stone); }
+
+  .pricing-card .btn-primary { text-align: center; width: 100%; }
+  .pricing-card--featured .btn-primary {
+    background: var(--cream); color: var(--brown);
+  }
+  .pricing-card--featured .btn-primary:hover {
+    box-shadow: 0 6px 20px rgba(251, 245, 238, 0.3);
+  }
+
+  /* Pilot card */
+  .pilot-card {
+    background: var(--linen);
+    border: 2px dashed var(--stone);
+    border-radius: 12px;
+    padding: 2rem 2.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 2rem; flex-wrap: wrap;
+  }
+  .pilot-info h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem; font-weight: 700;
+    color: var(--espresso); margin-bottom: 0.25rem;
+  }
+  .pilot-price {
+    font-family: var(--font-display);
+    font-size: 1.75rem; font-weight: 700;
+    color: var(--terracotta); margin-bottom: 0.25rem;
+  }
+  .pilot-info p { font-size: 0.9rem; color: var(--timber); }
+
+  /* ═══ PROOF ═════════════════════════════════════ */
+  .proof {
+    background: var(--stone);
+    padding: var(--section-padding) 0;
+  }
+
+  .proof-header { max-width: 700px; margin-bottom: 3rem; }
+  .proof-header h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700; line-height: 1.1;
+    letter-spacing: -0.02em; color: var(--espresso);
+  }
+
+  .proof-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .proof-card {
+    background: var(--cream);
+    border-radius: 12px;
+    padding: 2rem;
+    position: relative;
+  }
+  .proof-card-quote {
+    font-size: 1rem; line-height: 1.6;
+    color: var(--charcoal);
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+  .proof-card-name {
+    font-family: var(--font-display);
+    font-weight: 600; font-size: 0.95rem;
+    color: var(--espresso);
+  }
+  .proof-card-role {
+    font-size: 0.85rem; color: var(--timber);
+  }
+  .proof-card-placeholder {
+    font-size: 0.8rem; color: var(--timber);
+    text-align: center; padding: 2rem 1rem;
+    border: 2px dashed var(--stone); border-radius: 8px;
+    font-style: italic;
+  }
+
+  /* ═══ OBJECTIONS ════════════════════════════════ */
+  .objections {
+    background: var(--cream);
+    padding: var(--section-padding) 0;
+  }
+
+  .objections-header { max-width: 700px; margin-bottom: 3rem; }
+  .objections-header h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700; line-height: 1.1;
+    letter-spacing: -0.02em; color: var(--espresso);
+  }
+
+  .objection-list { max-width: 800px; }
+
+  .objection-item {
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--stone);
+  }
+  .objection-item:first-child { padding-top: 0; }
+  .objection-item:last-child { border-bottom: none; }
+
+  .objection-q {
+    font-family: var(--font-display);
+    font-size: 1.2rem; font-weight: 600;
+    color: var(--espresso);
+    margin-bottom: 0.75rem;
+    display: flex; align-items: flex-start; gap: 0.75rem;
+  }
+  .objection-bracket {
+    color: var(--terracotta); font-weight: 700;
+    flex-shrink: 0;
+  }
+  .objection-a {
+    color: var(--charcoal);
+    line-height: 1.6;
+    padding-left: 1.75rem;
+  }
+
+  /* ═══ FINAL CTA ═════════════════════════════════ */
+  .final-cta {
+    background: var(--brown);
+    padding: var(--section-padding) 0;
+    text-align: center;
+  }
+  .final-cta h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    font-weight: 700; line-height: 1.1;
+    letter-spacing: -0.02em; color: var(--cream);
+    max-width: 700px; margin: 0 auto 1rem;
+  }
+  .final-cta p {
+    color: var(--stone);
+    font-size: clamp(1.05rem, 1.2vw, 1.15rem);
+    max-width: 550px; margin: 0 auto 2.5rem;
+  }
+  .final-cta-price {
+    font-family: var(--font-display);
+    font-size: 0.85rem; font-weight: 600;
+    color: var(--stone);
+    margin-top: 1rem; letter-spacing: 0.03em;
+  }
+
+  /* ═══ FOOTER ════════════════════════════════════ */
+  footer {
+    background: var(--espresso);
+    padding: 3rem 0;
+  }
+  .footer-inner {
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1.5rem;
+  }
+  .footer-brand {
+    font-family: var(--font-display);
+    font-weight: 700; font-size: 1rem;
+    color: var(--cream); text-decoration: none;
+  }
+  .footer-links { display: flex; gap: 2rem; list-style: none; }
+  .footer-links a {
+    font-size: 0.85rem; color: var(--timber);
+    text-decoration: none; transition: color 0.2s ease;
+  }
+  .footer-links a:hover { color: var(--cream); }
+  .footer-copy {
+    font-size: 0.8rem; color: var(--timber);
+    width: 100%; text-align: center;
+    margin-top: 1rem; padding-top: 1.5rem;
+    border-top: 1px solid rgba(232, 221, 211, 0.1);
+  }
+
+  /* ═══ SCROLL REVEAL ═════════════════════════════ */
+  .reveal {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  .reveal.visible {
+    opacity: 1; transform: translateY(0);
+  }
+
+  /* ═══ COUNTER ANIMATION ═════════════════════════ */
+  .counter { display: inline-block; }
+
+  /* ═══ RESPONSIVE ════════════════════════════════ */
+  @media (max-width: 1024px) {
+    .how-steps { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .how-steps::before { display: none; }
+    .pricing-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .pricing-card--featured { order: -1; }
+    .proof-grid { grid-template-columns: 1fr; }
+    .vertical-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    .nav-right { display: none; }
+    .nav-right.active { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--cream); padding: 1.5rem var(--side-padding); box-shadow: 0 4px 12px rgba(42, 24, 16, 0.1); }
+    .nav-right.active .nav-links { flex-direction: column; gap: 1rem; }
+    .nav-right.active .nav-links a { color: var(--charcoal); opacity: 1; font-size: 0.85rem; }
+    .nav-right.active .nav-cta { background: var(--terracotta); color: var(--cream); text-align: center; }
+    .nav-toggle { display: block; }
+
+    .hero h1 { font-size: clamp(2rem, 8vw, 3rem); }
+    .hero-stats { flex-direction: column; gap: 1.5rem; }
+
+    .how-steps { grid-template-columns: 1fr; }
+    .how-output { flex-direction: column; gap: 1.5rem; }
+
+    .pilot-card { flex-direction: column; text-align: center; }
+
+    .footer-inner { flex-direction: column; text-align: center; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+    * { transition-duration: 0.01ms !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ NAVIGATION ════════════════════════════════ -->
+<nav id="nav">
+  <a href="#" class="nav-brand">[ Ollie's Marketing ]</a>
+  <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-right').classList.toggle('active')">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#verticals">Industries</a></li>
+    </ul>
+    <a href="#cta" class="nav-cta">Book Your Pilot</a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ══════════════════════════════════════ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="section-tag section-tag--light">[ The Content Engine ]</div>
+      <h1>Turn one conversation into a month of content</h1>
+      <p class="hero-sub">You record one 30-minute conversation. We turn it into a full podcast episode, 15+ social media clips, and a content calendar that positions you as the authority in your industry. Done for you, every month.</p>
+      <div class="hero-ctas">
+        <a href="#cta" class="btn-primary btn-primary--cream">Book Your $500 Pilot</a>
+        <a href="#how-it-works" class="btn-ghost">See How It Works</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-number"><span class="counter" data-target="15">0</span>+</div>
+          <div class="hero-stat-label">Social clips from<br>one recording</div>
+        </div>
+        <div>
+          <div class="hero-stat-number"><span class="counter" data-target="30">0</span> min</div>
+          <div class="hero-stat-label">Of your time<br>per month</div>
+        </div>
+        <div>
+          <div class="hero-stat-number">$<span class="counter" data-target="0">0</span></div>
+          <div class="hero-stat-label">Per click after<br>content is made</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOW IT WORKS ══════════════════════════════ -->
+<section class="how-it-works" id="how-it-works">
+  <div class="container">
+    <div class="how-header reveal">
+      <div class="section-tag">[ How It Works ]</div>
+      <h2>One morning. A month of content.</h2>
+      <p>The Content Engine turns your expertise into a steady stream of authority-building content — without eating into your week.</p>
+    </div>
+
+    <div class="how-steps reveal">
+      <div class="how-step">
+        <div class="step-number">1</div>
+        <h3>Film</h3>
+        <p>You sit down for a 30-minute filmed conversation. We handle the studio, cameras, lighting, and direction. You just talk about what you know.</p>
+      </div>
+      <div class="how-step">
+        <div class="step-number">2</div>
+        <h3>Edit</h3>
+        <p>Our team edits the full episode, pulls the best moments, creates short-form clips with captions, thumbnails, and SEO-optimised descriptions.</p>
+      </div>
+      <div class="how-step">
+        <div class="step-number">3</div>
+        <h3>Distribute</h3>
+        <p>Content goes out across every platform — Instagram Reels, YouTube Shorts, TikTok, LinkedIn, podcast directories, and your email list.</p>
+      </div>
+    </div>
+
+    <div class="how-output reveal">
+      <div class="how-output-item">
+        <div class="how-output-number"><span class="counter" data-target="1">0</span></div>
+        <div class="how-output-label">Conversation</div>
+      </div>
+      <div class="how-output-item" style="font-family: var(--font-display); font-size: 1.5rem; color: var(--timber);">→</div>
+      <div class="how-output-item">
+        <div class="how-output-number"><span class="counter" data-target="1">0</span></div>
+        <div class="how-output-label">Full Episode</div>
+      </div>
+      <div class="how-output-item" style="font-family: var(--font-display); font-size: 1.5rem; color: var(--timber);">+</div>
+      <div class="how-output-item">
+        <div class="how-output-number"><span class="counter" data-target="15">0</span>+</div>
+        <div class="how-output-label">Social Clips</div>
+      </div>
+      <div class="how-output-item" style="font-family: var(--font-display); font-size: 1.5rem; color: var(--timber);">+</div>
+      <div class="how-output-item">
+        <div class="how-output-number"><span class="counter" data-target="1">0</span></div>
+        <div class="how-output-label">Email Newsletter</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHO IT'S FOR ══════════════════════════════ -->
+<section class="who-its-for" id="verticals">
+  <div class="container">
+    <div class="who-header reveal">
+      <div class="section-tag section-tag--light">[ Who It's For ]</div>
+      <h2>Built for professionals who win on trust</h2>
+      <p>The Content Engine works best for industries where expertise and reputation drive revenue — not ads.</p>
+    </div>
+
+    <div class="vertical-grid reveal">
+      <a href="content-engine-mortgage-brokers.html" class="vertical-card">
+        <div class="vertical-card-tag">[ #1 Vertical ]</div>
+        <h3>Mortgage Brokers</h3>
+        <p>Google Ads costs $15/click and climbing. 72% of your business comes from referrals. Video makes you 10x more referable — and costs $0/click after it's made.</p>
+        <span class="vertical-card-arrow">Learn More →</span>
+      </a>
+      <a href="#" class="vertical-card">
+        <div class="vertical-card-tag">[ Finance ]</div>
+        <h3>Finance Brokers</h3>
+        <p>Your B2B clients research for 6 months before choosing a broker. One podcast conversation equals 15 LinkedIn posts. That's 3 months of authority in one morning.</p>
+        <span class="vertical-card-arrow">Coming Soon</span>
+      </a>
+      <a href="#" class="vertical-card">
+        <div class="vertical-card-tag">[ Property ]</div>
+        <h3>Real Estate Agents</h3>
+        <p>Listings with video get 403% more inquiries. The agents closing 30-40% more leads all have one thing in common: consistent social media presence.</p>
+        <span class="vertical-card-arrow">Coming Soon</span>
+      </a>
+      <a href="#" class="vertical-card">
+        <div class="vertical-card-tag">[ Fitness ]</div>
+        <h3>Gyms &amp; Fitness Studios</h3>
+        <p>Your community is your content. Member transformations, trainer expertise, class energy — it all becomes scroll-stopping social content that drives new sign-ups.</p>
+        <span class="vertical-card-arrow">Coming Soon</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PRICING ═══════════════════════════════════ -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="pricing-header reveal">
+      <div class="section-tag">[ What You Get ]</div>
+      <h2>Transparent pricing. No sales calls to find out.</h2>
+      <p>Every tier includes filming, editing, and distribution. Pick the level that matches your growth goals.</p>
+    </div>
+
+    <div class="pricing-grid reveal">
+      <!-- Starter -->
+      <div class="pricing-card">
+        <div class="pricing-tier">[ Starter ]</div>
+        <div class="pricing-name">Content Engine Starter</div>
+        <div class="pricing-price">$2,500</div>
+        <div class="pricing-period">per month</div>
+        <ul class="pricing-features">
+          <li>4 filmed podcast episodes / month</li>
+          <li>Full audio + video editing</li>
+          <li>Distribution across all platforms</li>
+          <li>8 short-form social clips</li>
+          <li>Monthly content calendar</li>
+        </ul>
+        <div class="pricing-commitment">Minimum 3-month commitment</div>
+        <a href="#cta" class="btn-primary">Get Started</a>
+      </div>
+
+      <!-- Pro (Featured) -->
+      <div class="pricing-card pricing-card--featured">
+        <div class="pricing-badge">Most Popular</div>
+        <div class="pricing-tier">[ Pro ]</div>
+        <div class="pricing-name">Content Engine Pro</div>
+        <div class="pricing-price">$4,000</div>
+        <div class="pricing-period">per month</div>
+        <ul class="pricing-features">
+          <li>4 filmed podcast episodes / month</li>
+          <li>Full audio + video editing</li>
+          <li>Distribution across all platforms</li>
+          <li>16 short-form social clips</li>
+          <li>Custom thumbnails + captions + SEO</li>
+          <li>Monthly strategy call + analytics</li>
+          <li>Email newsletter content</li>
+        </ul>
+        <div class="pricing-commitment">Minimum 6-month commitment</div>
+        <a href="#cta" class="btn-primary">Get Started</a>
+      </div>
+
+      <!-- Elite -->
+      <div class="pricing-card">
+        <div class="pricing-tier">[ Elite ]</div>
+        <div class="pricing-name">Content Engine Elite</div>
+        <div class="pricing-price">$6,500</div>
+        <div class="pricing-period">per month</div>
+        <ul class="pricing-features">
+          <li>Everything in Pro, plus:</li>
+          <li>Social media management</li>
+          <li>Guest research + coordination</li>
+          <li>Paid social ad management</li>
+          <li>Quarterly brand strategy review</li>
+          <li>Priority scheduling</li>
+        </ul>
+        <div class="pricing-commitment">Minimum 12-month commitment</div>
+        <a href="#cta" class="btn-primary">Get Started</a>
+      </div>
+    </div>
+
+    <!-- Pilot -->
+    <div class="pilot-card reveal">
+      <div class="pilot-info">
+        <div class="pilot-price">$500</div>
+        <h3>The Content Engine Pilot</h3>
+        <p>Not sure yet? Try one filmed episode with 4 social clips and a strategy debrief. Zero risk — if the content doesn't impress you, that's the end of it.</p>
+      </div>
+      <a href="#cta" class="btn-primary">Book the Pilot</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROOF ═════════════════════════════════════ -->
+<section class="proof" id="proof">
+  <div class="container">
+    <div class="proof-header reveal">
+      <div class="section-tag">[ Results ]</div>
+      <h2>Don't take our word for it</h2>
+    </div>
+
+    <div class="proof-grid reveal">
+      <div class="proof-card">
+        <div class="proof-card-placeholder">
+          Client testimonial placeholder.<br><br>
+          Real results from @dofinancialservices and other clients will go here once Ollie provides case study data, metrics, and quotes.
+        </div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-card-placeholder">
+          Portfolio showcase placeholder.<br><br>
+          Before/after examples of client content — raw recording vs. finished social clips showing the quality of production.
+        </div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-card-placeholder">
+          Industry stats placeholder.<br><br>
+          Third-party data backing the content engine model: video ROI, social engagement rates, organic reach growth data.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ OBJECTIONS ════════════════════════════════ -->
+<section class="objections" id="objections">
+  <div class="container">
+    <div class="objections-header reveal">
+      <div class="section-tag">[ Straight Talk ]</div>
+      <h2>Questions you're probably thinking</h2>
+    </div>
+
+    <div class="objection-list reveal">
+      <div class="objection-item">
+        <div class="objection-q">
+          <span class="objection-bracket">[</span>
+          "I don't have time to record a podcast every week."
+          <span class="objection-bracket">]</span>
+        </div>
+        <p class="objection-a">You don't need to. We batch-film 4 episodes in one morning — about 2 hours of your time per month. We handle everything else: scheduling, editing, posting, distribution. Your only job is to talk about what you already know.</p>
+      </div>
+
+      <div class="objection-item">
+        <div class="objection-q">
+          <span class="objection-bracket">[</span>
+          "I'm not good on camera."
+          <span class="objection-bracket">]</span>
+        </div>
+        <p class="objection-a">Nobody thinks they are at first. That's why we handle the direction, lighting, and framing. After 10 minutes in the chair, every client forgets the camera is there. The format is a conversation, not a performance — and that's exactly what your audience wants to see.</p>
+      </div>
+
+      <div class="objection-item">
+        <div class="objection-q">
+          <span class="objection-bracket">[</span>
+          "Is video content actually worth the investment?"
+          <span class="objection-bracket">]</span>
+        </div>
+        <p class="objection-a">The average Google Ads click costs $10-15 and disappears the moment you stop paying. Content you create exists permanently — it compounds. A single episode can generate traffic, leads, and credibility for years. At $2,500/month, you're investing less than a modest Google Ads budget and building an asset you own.</p>
+      </div>
+
+      <div class="objection-item">
+        <div class="objection-q">
+          <span class="objection-bracket">[</span>
+          "What if I run out of things to talk about?"
+          <span class="objection-bracket">]</span>
+        </div>
+        <p class="objection-a">You won't. Our strategy team plans your content calendar based on what your audience is searching for — rate updates, market commentary, client questions, industry trends. Most clients have a 12-month backlog of topics after our first planning session.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FINAL CTA ═════════════════════════════════ -->
+<section class="final-cta" id="cta">
+  <div class="container reveal">
+    <div class="section-tag section-tag--light">[ Let's Start ]</div>
+    <h2>Your competitors are already creating content. Are you?</h2>
+    <p>Book the $500 Content Engine Pilot. One filmed episode, 4 social clips, and a strategy session. See what your content could look like — with zero ongoing commitment.</p>
+    <a href="mailto:hello@olliesmarketing.com.au?subject=Content%20Engine%20Pilot" class="btn-primary btn-primary--cream">Book Your $500 Pilot</a>
+    <div class="final-cta-price">$500 one-time · 1 episode · 4 clips · strategy debrief</div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a href="#" class="footer-brand">[ Ollie's Marketing ]</a>
+      <ul class="footer-links">
+        <li><a href="https://instagram.com/olliesmarketing" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="mailto:hello@olliesmarketing.com.au">Email</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+      </ul>
+      <div class="footer-copy">&copy; 2026 Ollie's Marketing. Brisbane, QLD.</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ JAVASCRIPT ════════════════════════════════ -->
+<script>
+(function() {
+  'use strict';
+
+  // Nav scroll effect
+  const nav = document.getElementById('nav');
+  let lastScroll = 0;
+  window.addEventListener('scroll', function() {
+    const scrollY = window.scrollY;
+    if (scrollY > 80) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+    lastScroll = scrollY;
+  }, { passive: true });
+
+  // Scroll reveal
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!prefersReduced) {
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(function(el) { observer.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      el.classList.add('visible');
+    });
+  }
+
+  // Counter animation
+  function animateCounter(el) {
+    const target = parseInt(el.getAttribute('data-target'), 10);
+    if (isNaN(target)) return;
+    const duration = 2000;
+    const start = performance.now();
+
+    function update(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+      el.textContent = Math.round(target * eased);
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  }
+
+  if (!prefersReduced) {
+    const counters = document.querySelectorAll('.counter');
+    const counterObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(function(el) { counterObserver.observe(el); });
+  } else {
+    document.querySelectorAll('.counter').forEach(function(el) {
+      el.textContent = el.getAttribute('data-target');
+    });
+  }
+})();
+</script>
+
+</body>
+</html>

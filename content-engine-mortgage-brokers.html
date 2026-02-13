@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Content Engine for Mortgage Brokers — Ollie's Marketing | Video Content That Builds Referrals</title>
+<meta name="description" content="Mortgage brokers: turn one 30-minute conversation into a month of authority-building content. Less than your monthly Google Ads spend. Brisbane video podcast production.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  /* ═══════════════════════════════════════════════
+     OLLIE'S MARKETING — MORTGAGE BROKER VERTICAL
+     Pattern: Self-contained HTML (shared brand tokens)
+     ═══════════════════════════════════════════════ */
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --brown: #6B3A1E;
+    --cream: #FBF5EE;
+    --espresso: #2A1810;
+    --stone: #E8DDD3;
+    --terracotta: #C1553A;
+    --timber: #8B6F5C;
+    --linen: #F3EBE2;
+    --charcoal: #3D2E24;
+    --font-display: 'Sora', system-ui, sans-serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+    --section-padding: clamp(5rem, 10vw, 8rem);
+    --side-padding: clamp(1.5rem, 6vw, 6rem);
+    --max-width: 1200px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--espresso);
+    background: var(--cream);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    font-size: clamp(1rem, 1.1vw, 1.125rem);
+    line-height: 1.6;
+  }
+
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--side-padding);
+  }
+
+  /* ═══ NAVIGATION ════════════════════════════════ */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.25rem var(--side-padding);
+    background: transparent;
+    transition: background 0.4s ease, box-shadow 0.4s ease, padding 0.4s ease;
+  }
+  nav.scrolled {
+    background: rgba(251, 245, 238, 0.97);
+    box-shadow: 0 1px 0 var(--stone);
+    padding-top: 1rem; padding-bottom: 1rem;
+  }
+
+  .nav-brand {
+    font-family: var(--font-display);
+    font-weight: 700; font-size: 1.1rem;
+    color: var(--cream); text-decoration: none;
+    transition: color 0.4s ease;
+  }
+  nav.scrolled .nav-brand { color: var(--brown); }
+
+  .nav-right { display: flex; align-items: center; gap: 2.5rem; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-family: var(--font-display);
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--cream); text-decoration: none;
+    opacity: 0.7; transition: opacity 0.2s ease, color 0.4s ease;
+  }
+  .nav-links a:hover { opacity: 1; }
+  nav.scrolled .nav-links a { color: var(--charcoal); }
+
+  .nav-cta {
+    font-family: var(--font-display);
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; text-decoration: none;
+    color: var(--brown); background: var(--cream);
+    padding: 0.65rem 1.4rem; border-radius: 8px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.4s ease, color 0.4s ease;
+  }
+  .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(42, 24, 16, 0.15); }
+  nav.scrolled .nav-cta { background: var(--terracotta); color: var(--cream); }
+
+  .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+  .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--cream); margin: 5px 0; transition: all 0.3s ease; }
+  nav.scrolled .nav-toggle span { background: var(--charcoal); }
+
+  /* ═══ SHARED ELEMENTS ═══════════════════════════ */
+  .section-tag {
+    font-family: var(--font-display);
+    font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--terracotta); margin-bottom: 1.5rem;
+  }
+  .section-tag--light { color: var(--stone); }
+
+  .btn-primary {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 0.8rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    text-decoration: none;
+    background: var(--terracotta); color: var(--cream);
+    padding: 1rem 2rem; border-radius: 8px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(193, 85, 58, 0.3); }
+
+  .btn-primary--cream { background: var(--cream); color: var(--brown); }
+  .btn-primary--cream:hover { box-shadow: 0 6px 20px rgba(251, 245, 238, 0.3); }
+
+  .btn-ghost {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 0.8rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    text-decoration: none;
+    color: var(--cream); border: 2px solid rgba(251, 245, 238, 0.3);
+    padding: calc(1rem - 2px) calc(2rem - 2px); border-radius: 8px;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+  .btn-ghost:hover { border-color: var(--cream); transform: translateY(-2px); }
+
+  /* ═══ HERO ══════════════════════════════════════ */
+  .hero {
+    min-height: 100vh;
+    background: var(--brown);
+    display: flex; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      radial-gradient(circle at 30% 70%, rgba(193, 85, 58, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 30%, rgba(251, 245, 238, 0.04) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .hero .container { position: relative; z-index: 1; padding-top: 8rem; padding-bottom: 5rem; }
+  .hero-content { max-width: 800px; }
+
+  .hero-breadcrumb {
+    font-family: var(--font-display);
+    font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+  .hero-breadcrumb a {
+    color: var(--stone); text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .hero-breadcrumb a:hover { color: var(--cream); }
+  .hero-breadcrumb span { color: var(--timber); margin: 0 0.5rem; }
+  .hero-breadcrumb .current { color: var(--terracotta); }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.25rem, 5vw, 4rem);
+    font-weight: 700; line-height: 1.08;
+    letter-spacing: -0.02em; color: var(--cream);
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 em {
+    font-style: normal; color: var(--terracotta);
+  }
+
+  .hero-sub {
+    font-size: clamp(1.1rem, 1.35vw, 1.25rem);
+    line-height: 1.5; color: var(--stone);
+    max-width: 600px; margin-bottom: 2.5rem;
+  }
+
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .hero-proof {
+    margin-top: 3.5rem;
+    padding: 1.5rem 2rem;
+    background: rgba(251, 245, 238, 0.05);
+    border: 1px solid rgba(251, 245, 238, 0.1);
+    border-radius: 12px;
+    max-width: 500px;
+  }
+  .hero-proof-stat {
+    font-family: var(--font-display);
+    font-size: 1.75rem; font-weight: 700;
+    color: var(--cream); line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .hero-proof-text {
+    font-size: 0.9rem; color: var(--stone); line-height: 1.4;
+  }
+  .hero-proof-source {
+    font-size: 0.75rem; color: var(--timber);
+    margin-top: 0.5rem;
+  }
+
+  /* ═══ THE PROBLEM ═══════════════════════════════ */
+  .problem {
+    background: var(--cream);
+    padding: var(--section-padding) 0;
+  }
+
+  .problem-header { max-width: 700px; margin-bottom: 3rem; }
+  .problem-header h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700; line-height: 1.1;
+    letter-spacing: -0.02em; color: var(--espresso);
+  }
+  .problem-header p {
+    margin-top: 1rem; color: var(--timber);
+    font-size: clamp(1.05rem, 1.2vw, 1.15rem);
+    max-width: 600px;
+  }
+
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .problem-card {
+    background: var(--linen);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+  .problem-card-number {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3vw, 2.75rem);
+    font-weight: 700; color: var(--terracotta);
+    line-height: 1; margin-bottom: 0.75rem;
+  }
+  .problem-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.1rem; font-weight: 600;
+    color: var(--espresso); margin-bottom: 0.5rem;
+  }
+  .problem-card p {
+    font-size: 0.9rem; color: var(--timber); line-height: 1.5;
+  }
+
+  /* ═══ THE SOLUTION ══════════════════════════════ */
+  .solution {
+    background: var(--stone);
+    padding: var(--section-padding) 0;
+  }
+
+  .solution-header { max-width: 700px; margin-bottom: 3rem; }
+  .solution-header h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700; line-height: 1.1;
+    letter-spacing: -0.02em; color: var(--espresso);
+  }
+  .solution-header p {
+    margin-top: 1rem; color: var(--charcoal);
+    font-size: clamp(1.05rem, 1.2vw, 1.15rem);
+    max-width: 600px;
+  }
+
+  .content-types {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .content-type {
+    background: var(--cream);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+  .content-type-icon {
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+  }
+  .content-type h3 {
+    font-family: var(--font-display);
+    font-size: 1.1rem; font-weight: 600;
+    color: var(--espresso); margin-bottom: 0.5rem;
+  }
+  .content-type p {
+    font-size: 0.9rem; color: var(--timber); line-height: 1.5;
+  }
+
+  /* ═══ ROI COMPARISON ════════════════════════════ */
+  .roi {
+    background: var(--brown);
+    padding: var(--section-padding) 0;
+  }
+
+  .roi-header { max-width: 700px; margin-bottom: 3rem; }
+  .roi-header h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700; line-height: 1.1;
+    letter-spacing: -0.02em; color: var(--cream);
+  }
+  .roi-header p {
+    margin-top: 1rem; color: var(--stone);
+    font-size: clamp(1.05rem, 1.2vw, 1.15rem);
+  }
+
+  .roi-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    max-width: 900px;
+  }
+
+  .roi-column {
+    padding: 2.5rem;
+  }
+  .roi-column--ads {
+    background: rgba(251, 245, 238, 0.05);
+    border: 1px solid rgba(251, 245, 238, 0.1);
+    border-right: none;
+    border-radius: 12px 0 0 12px;
+  }
+  .roi-column--content {
+    background: var(--terracotta);
+    border-radius: 0 12px 12px 0;
+  }
+
+  .roi-column-label {
+    font-family: var(--font-display);
+    font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .roi-column--ads .roi-column-label { color: var(--stone); }
+  .roi-column--content .roi-column-label { color: rgba(251, 245, 238, 0.7); }
+
+  .roi-row {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(251, 245, 238, 0.08);
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .roi-row:last-child { border-bottom: none; padding-top: 1rem; }
+
+  .roi-row-label {
+    font-size: 0.85rem;
+  }
+  .roi-column--ads .roi-row-label { color: var(--stone); }
+  .roi-column--content .roi-row-label { color: rgba(251, 245, 238, 0.8); }
+
+  .roi-row-value {
+    font-family: var(--font-display);
+    font-weight: 700; font-size: 1rem;
+  }
+  .roi-column--ads .roi-row-value { color: var(--cream); }
+  .roi-column--content .roi-row-value { color: var(--cream); }
+
+  .roi-row--total .roi-row-value {
+    font-size: 1.25rem;
+  }
+  .roi-row--total .roi-row-label {
+    font-weight: 600;
+  }
+
+  .roi-bottom {
+    margin-top: 2rem;
+    text-align: center;
+    max-width: 900px;
+  }
+  .roi-bottom p {
+    color: var(--stone);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+  .roi-bottom strong { color: var(--cream); }
+
+  /* ═══ PROOF / CASE STUDY ════════════════════════ */
+  .case-study {
+    background: var(--cream);
+    padding: var(--section-padding) 0;
+  }
+
+  .case-study-header { max-width: 700px; margin-bottom: 3rem; }
+  .case-study-header h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700; line-height: 1.1;
+    letter-spacing: -0.02em; color: var(--espresso);
+  }
+
+  .case-study-card {
+    background: var(--linen);
+    border-radius: 12px;
+    padding: 3rem;
+    max-width: 900px;
+  }
+  .case-study-placeholder {
+    text-align: center;
+    padding: 2rem;
+    border: 2px dashed var(--stone);
+    border-radius: 8px;
+    color: var(--timber);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  /* ═══ MARKET STATS ══════════════════════════════ */
+  .market-stats {
+    background: var(--linen);
+    padding: var(--section-padding) 0;
+  }
+
+  .stats-header { max-width: 700px; margin-bottom: 3rem; }
+  .stats-header h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700; line-height: 1.1;
+    letter-spacing: -0.02em; color: var(--espresso);
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .stat-card {
+    text-align: center;
+    padding: 1.5rem;
+  }
+  .stat-number {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 700; color: var(--brown);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.85rem; color: var(--timber);
+    margin-top: 0.5rem; line-height: 1.3;
+  }
+  .stat-source {
+    font-size: 0.7rem; color: var(--stone);
+    margin-top: 0.25rem;
+  }
+
+  /* ═══ PRICING (Broker-specific framing) ═════════ */
+  .pricing {
+    background: var(--cream);
+    padding: var(--section-padding) 0;
+  }
+
+  .pricing-header { max-width: 700px; margin-bottom: 3.5rem; }
+  .pricing-header h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700; line-height: 1.1;
+    letter-spacing: -0.02em; color: var(--espresso);
+  }
+  .pricing-header p {
+    margin-top: 1rem; color: var(--timber);
+    font-size: clamp(1.05rem, 1.2vw, 1.15rem);
+    max-width: 600px;
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .pricing-card {
+    background: var(--linen);
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    display: flex; flex-direction: column;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .pricing-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(42, 24, 16, 0.08);
+  }
+  .pricing-card--featured {
+    background: var(--brown); color: var(--cream);
+    box-shadow: 0 4px 20px rgba(42, 24, 16, 0.15);
+  }
+
+  .pricing-badge {
+    position: absolute; top: -12px; right: 24px;
+    background: var(--terracotta); color: var(--cream);
+    font-family: var(--font-display);
+    font-size: 0.65rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.4rem 1rem; border-radius: 20px;
+  }
+
+  .pricing-tier {
+    font-family: var(--font-display);
+    font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--terracotta); margin-bottom: 0.5rem;
+  }
+  .pricing-card--featured .pricing-tier { color: var(--stone); }
+
+  .pricing-name {
+    font-family: var(--font-display);
+    font-size: 1.35rem; font-weight: 700;
+    color: var(--espresso); margin-bottom: 1rem;
+  }
+  .pricing-card--featured .pricing-name { color: var(--cream); }
+
+  .pricing-price {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3vw, 2.5rem);
+    font-weight: 700; color: var(--espresso);
+    line-height: 1; margin-bottom: 0.25rem;
+  }
+  .pricing-card--featured .pricing-price { color: var(--cream); }
+
+  .pricing-context {
+    font-size: 0.8rem; color: var(--terracotta);
+    margin-bottom: 0.25rem; font-weight: 500;
+  }
+  .pricing-card--featured .pricing-context { color: var(--cream); opacity: 0.8; }
+
+  .pricing-period {
+    font-size: 0.85rem; color: var(--timber);
+    margin-bottom: 1.5rem;
+  }
+  .pricing-card--featured .pricing-period { color: var(--stone); }
+
+  .pricing-features {
+    list-style: none; margin-bottom: 2rem; flex-grow: 1;
+  }
+  .pricing-features li {
+    font-size: 0.9rem; line-height: 1.4;
+    padding: 0.5rem 0; padding-left: 1.5rem;
+    position: relative; color: var(--charcoal);
+  }
+  .pricing-card--featured .pricing-features li { color: var(--stone); }
+  .pricing-features li::before {
+    content: '✓'; position: absolute; left: 0;
+    color: var(--terracotta); font-weight: 700;
+  }
+  .pricing-card--featured .pricing-features li::before { color: var(--cream); }
+
+  .pricing-commitment {
+    font-size: 0.8rem; color: var(--timber);
+    margin-bottom: 1.5rem; font-style: italic;
+  }
+  .pricing-card--featured .pricing-commitment { color: var(--stone); }
+
+  .pricing-card .btn-primary { text-align: center; width: 100%; }
+  .pricing-card--featured .btn-primary { background: var(--cream); color: var(--brown); }
+  .pricing-card--featured .btn-primary:hover { box-shadow: 0 6px 20px rgba(251, 245, 238, 0.3); }
+
+  /* Pilot card */
+  .pilot-card {
+    background: var(--linen);
+    border: 2px dashed var(--stone);
+    border-radius: 12px;
+    padding: 2rem 2.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 2rem; flex-wrap: wrap;
+  }
+  .pilot-info h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem; font-weight: 700;
+    color: var(--espresso); margin-bottom: 0.25rem;
+  }
+  .pilot-price {
+    font-family: var(--font-display);
+    font-size: 1.75rem; font-weight: 700;
+    color: var(--terracotta); margin-bottom: 0.25rem;
+  }
+  .pilot-info p { font-size: 0.9rem; color: var(--timber); }
+
+  /* ═══ FINAL CTA ═════════════════════════════════ */
+  .final-cta {
+    background: var(--brown);
+    padding: var(--section-padding) 0;
+    text-align: center;
+  }
+  .final-cta h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    font-weight: 700; line-height: 1.1;
+    letter-spacing: -0.02em; color: var(--cream);
+    max-width: 750px; margin: 0 auto 1rem;
+  }
+  .final-cta p {
+    color: var(--stone);
+    font-size: clamp(1.05rem, 1.2vw, 1.15rem);
+    max-width: 600px; margin: 0 auto 2.5rem;
+    line-height: 1.5;
+  }
+  .final-cta-price {
+    font-family: var(--font-display);
+    font-size: 0.85rem; font-weight: 600;
+    color: var(--stone);
+    margin-top: 1rem; letter-spacing: 0.03em;
+  }
+
+  /* ═══ FOOTER ════════════════════════════════════ */
+  footer {
+    background: var(--espresso);
+    padding: 3rem 0;
+  }
+  .footer-inner {
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1.5rem;
+  }
+  .footer-brand {
+    font-family: var(--font-display);
+    font-weight: 700; font-size: 1rem;
+    color: var(--cream); text-decoration: none;
+  }
+  .footer-links { display: flex; gap: 2rem; list-style: none; }
+  .footer-links a {
+    font-size: 0.85rem; color: var(--timber);
+    text-decoration: none; transition: color 0.2s ease;
+  }
+  .footer-links a:hover { color: var(--cream); }
+  .footer-copy {
+    font-size: 0.8rem; color: var(--timber);
+    width: 100%; text-align: center;
+    margin-top: 1rem; padding-top: 1.5rem;
+    border-top: 1px solid rgba(232, 221, 211, 0.1);
+  }
+
+  /* ═══ SCROLL REVEAL ═════════════════════════════ */
+  .reveal {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  .counter { display: inline-block; }
+
+  /* ═══ RESPONSIVE ════════════════════════════════ */
+  @media (max-width: 1024px) {
+    .problem-grid { grid-template-columns: 1fr; }
+    .content-types { grid-template-columns: 1fr; }
+    .roi-table { grid-template-columns: 1fr; }
+    .roi-column--ads { border-right: 1px solid rgba(251, 245, 238, 0.1); border-bottom: none; border-radius: 12px 12px 0 0; }
+    .roi-column--content { border-radius: 0 0 12px 12px; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .pricing-card--featured { order: -1; }
+  }
+
+  @media (max-width: 768px) {
+    .nav-right { display: none; }
+    .nav-right.active { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--cream); padding: 1.5rem var(--side-padding); box-shadow: 0 4px 12px rgba(42, 24, 16, 0.1); }
+    .nav-right.active .nav-links { flex-direction: column; gap: 1rem; }
+    .nav-right.active .nav-links a { color: var(--charcoal); opacity: 1; font-size: 0.85rem; }
+    .nav-right.active .nav-cta { background: var(--terracotta); color: var(--cream); text-align: center; }
+    .nav-toggle { display: block; }
+
+    .hero h1 { font-size: clamp(2rem, 7.5vw, 2.75rem); }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .pilot-card { flex-direction: column; text-align: center; }
+    .footer-inner { flex-direction: column; text-align: center; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+    * { transition-duration: 0.01ms !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ NAVIGATION ════════════════════════════════ -->
+<nav id="nav">
+  <a href="content-engine.html" class="nav-brand">[ Ollie's Marketing ]</a>
+  <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-right').classList.toggle('active')">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="content-engine.html">Content Engine</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#roi">ROI</a></li>
+    </ul>
+    <a href="#cta" class="nav-cta">Book Your Pilot</a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ══════════════════════════════════════ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-breadcrumb">
+        <a href="content-engine.html">Content Engine</a>
+        <span>/</span>
+        <span class="current">Mortgage Brokers</span>
+      </div>
+      <div class="section-tag section-tag--light">[ For Mortgage Brokers ]</div>
+      <h1>Your competitors are on Instagram. <em>Are you?</em></h1>
+      <p class="hero-sub">Google Ads costs $15/click and climbing. Meanwhile, 72% of your business comes from referrals and trust. Video content builds both — and costs $0 per click after it's made. We handle everything.</p>
+      <div class="hero-ctas">
+        <a href="#cta" class="btn-primary btn-primary--cream">Book Your $500 Pilot</a>
+        <a href="#roi" class="btn-ghost">See the ROI</a>
+      </div>
+      <div class="hero-proof">
+        <div class="hero-proof-stat">22,031</div>
+        <div class="hero-proof-text">mortgage brokers in Australia. Less than 5% create video content consistently. The window to be first in your market is open — but closing.</div>
+        <div class="hero-proof-source">Source: MFAA 2025 Report</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ THE PROBLEM ═══════════════════════════════ -->
+<section class="problem">
+  <div class="container">
+    <div class="problem-header reveal">
+      <div class="section-tag">[ The Problem ]</div>
+      <h2>Paid ads are getting expensive. Referrals don't scale. What else is there?</h2>
+      <p>The three forces squeezing mortgage broker marketing budgets right now — and why content is the only one that compounds.</p>
+    </div>
+
+    <div class="problem-grid reveal">
+      <div class="problem-card">
+        <div class="problem-card-number">$15</div>
+        <h3>Per Click on Google Ads</h3>
+        <p>Up from $4 just two years ago. "Mortgage broker Brisbane" now costs $10-20 per click. That's $4,500/month for a modest campaign — and the leads disappear the moment you stop paying.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-card-number">72%</div>
+        <h3>Business from Referrals</h3>
+        <p>Referrals and repeat clients drive most broker revenue. But referrals rely on people remembering you at the right moment. Video keeps you visible between conversations — so you're top of mind when it matters.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-card-number">&lt;5%</div>
+        <h3>Of Brokers Create Video</h3>
+        <p>22,031 mortgage brokers in Australia. Almost none are creating consistent video content. The brokers who start now own their local market before competition catches up.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ THE SOLUTION ══════════════════════════════ -->
+<section class="solution">
+  <div class="container">
+    <div class="solution-header reveal">
+      <div class="section-tag">[ The Solution ]</div>
+      <h2>One conversation a month. We handle everything else.</h2>
+      <p>The Content Engine turns your expertise into a steady stream of content that builds authority, drives referrals, and positions you as the go-to broker in your market.</p>
+    </div>
+
+    <div class="content-types reveal">
+      <div class="content-type">
+        <div class="content-type-icon">📊</div>
+        <h3>Rate Updates &amp; Market Commentary</h3>
+        <p>"The RBA just cut rates — here's what it means for first home buyers in Brisbane." Weekly market commentary positions you as the expert your audience checks first.</p>
+      </div>
+      <div class="content-type">
+        <div class="content-type-icon">❓</div>
+        <h3>Client Q&amp;A Episodes</h3>
+        <p>"How much deposit do I really need?" Answer the questions your clients ask every week. Each answer becomes 3-4 clips that educate and qualify your next lead.</p>
+      </div>
+      <div class="content-type">
+        <div class="content-type-icon">🎓</div>
+        <h3>Educational Series</h3>
+        <p>"5 things every first home buyer gets wrong." Teach your way to trust. Educational content outperforms promotional content 3:1 on engagement.</p>
+      </div>
+      <div class="content-type">
+        <div class="content-type-icon">🤝</div>
+        <h3>Guest Interviews</h3>
+        <p>Interview conveyancers, real estate agents, financial planners — professionals in your referral network. Every interview strengthens a relationship AND creates content for both audiences.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ROI COMPARISON ════════════════════════════ -->
+<section class="roi" id="roi">
+  <div class="container">
+    <div class="roi-header reveal">
+      <div class="section-tag section-tag--light">[ The Numbers ]</div>
+      <h2>Google Ads vs. Content Engine</h2>
+      <p>What $4,000/month looks like in each model over 12 months.</p>
+    </div>
+
+    <div class="roi-table reveal">
+      <div class="roi-column roi-column--ads">
+        <div class="roi-column-label">[ Google Ads ]</div>
+        <div class="roi-row">
+          <span class="roi-row-label">Monthly spend</span>
+          <span class="roi-row-value">$4,000</span>
+        </div>
+        <div class="roi-row">
+          <span class="roi-row-label">Cost per click</span>
+          <span class="roi-row-value">$15</span>
+        </div>
+        <div class="roi-row">
+          <span class="roi-row-label">Clicks per month</span>
+          <span class="roi-row-value">~267</span>
+        </div>
+        <div class="roi-row">
+          <span class="roi-row-label">After 12 months</span>
+          <span class="roi-row-value">$48,000 spent</span>
+        </div>
+        <div class="roi-row roi-row--total">
+          <span class="roi-row-label">Assets you own</span>
+          <span class="roi-row-value">Zero</span>
+        </div>
+      </div>
+      <div class="roi-column roi-column--content">
+        <div class="roi-column-label">[ Content Engine ]</div>
+        <div class="roi-row">
+          <span class="roi-row-label">Monthly investment</span>
+          <span class="roi-row-value">$4,000</span>
+        </div>
+        <div class="roi-row">
+          <span class="roi-row-label">Episodes per month</span>
+          <span class="roi-row-value">4</span>
+        </div>
+        <div class="roi-row">
+          <span class="roi-row-label">Social clips per month</span>
+          <span class="roi-row-value">16</span>
+        </div>
+        <div class="roi-row">
+          <span class="roi-row-label">After 12 months</span>
+          <span class="roi-row-value">$48,000 invested</span>
+        </div>
+        <div class="roi-row roi-row--total">
+          <span class="roi-row-label">Assets you own</span>
+          <span class="roi-row-value">48 episodes + 192 clips</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="roi-bottom reveal">
+      <p>Same spend. One leaves you with nothing when you stop. The other gives you <strong>48 full episodes and 192 social clips</strong> — a content library that keeps working for you, generating organic traffic and referrals for years.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MARKET STATS ══════════════════════════════ -->
+<section class="market-stats">
+  <div class="container">
+    <div class="stats-header reveal">
+      <div class="section-tag">[ The Opportunity ]</div>
+      <h2>The numbers behind the shift</h2>
+    </div>
+    <div class="stats-grid reveal">
+      <div class="stat-card">
+        <div class="stat-number"><span class="counter" data-target="22031">0</span></div>
+        <div class="stat-label">Mortgage brokers in Australia</div>
+        <div class="stat-source">MFAA 2025</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number"><span class="counter" data-target="72">0</span>%</div>
+        <div class="stat-label">Business from referrals &amp; repeat clients</div>
+        <div class="stat-source">MFAA Survey</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number"><span class="counter" data-target="95">0</span>%</div>
+        <div class="stat-label">Want monthly content from their broker</div>
+        <div class="stat-source">Industry research</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">3x</div>
+        <div class="stat-label">Google Ads CPC increase in 2 years</div>
+        <div class="stat-source">Google Ads data</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CASE STUDY ════════════════════════════════ -->
+<section class="case-study">
+  <div class="container">
+    <div class="case-study-header reveal">
+      <div class="section-tag">[ Proof ]</div>
+      <h2>See it in action</h2>
+    </div>
+    <div class="case-study-card reveal">
+      <div class="case-study-placeholder">
+        <strong>Case study placeholder — @dofinancialservices</strong><br><br>
+        Ollie's is currently producing content for Do Financial Services, a Brisbane-based mortgage and finance broker. Once we have metrics (follower growth, engagement rates, lead attribution, client feedback), this section will showcase the real results.<br><br>
+        <em>Content to add: Before/after social presence, sample clips, client quote, measurable outcomes.</em>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PRICING ═══════════════════════════════════ -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="pricing-header reveal">
+      <div class="section-tag">[ Investment ]</div>
+      <h2>Less than your monthly Google Ads spend</h2>
+      <p>Every tier includes filming, editing, and distribution. No hidden fees. No "call for pricing" games.</p>
+    </div>
+
+    <div class="pricing-grid reveal">
+      <div class="pricing-card">
+        <div class="pricing-tier">[ Starter ]</div>
+        <div class="pricing-name">Content Engine Starter</div>
+        <div class="pricing-price">$2,500</div>
+        <div class="pricing-context">Less than 170 Google Ads clicks</div>
+        <div class="pricing-period">per month</div>
+        <ul class="pricing-features">
+          <li>4 filmed episodes / month</li>
+          <li>Full audio + video editing</li>
+          <li>Platform distribution</li>
+          <li>8 short-form social clips</li>
+          <li>Monthly content calendar</li>
+        </ul>
+        <div class="pricing-commitment">Min 3-month commitment</div>
+        <a href="#cta" class="btn-primary">Get Started</a>
+      </div>
+
+      <div class="pricing-card pricing-card--featured">
+        <div class="pricing-badge">Best for Brokers</div>
+        <div class="pricing-tier">[ Pro ]</div>
+        <div class="pricing-name">Content Engine Pro</div>
+        <div class="pricing-price">$4,000</div>
+        <div class="pricing-context">Near-daily social content</div>
+        <div class="pricing-period">per month</div>
+        <ul class="pricing-features">
+          <li>4 filmed episodes / month</li>
+          <li>Full audio + video editing</li>
+          <li>Platform distribution</li>
+          <li>16 short-form social clips</li>
+          <li>Thumbnails + captions + SEO</li>
+          <li>Monthly strategy + analytics</li>
+          <li>Email newsletter content</li>
+        </ul>
+        <div class="pricing-commitment">Min 6-month commitment</div>
+        <a href="#cta" class="btn-primary">Get Started</a>
+      </div>
+
+      <div class="pricing-card">
+        <div class="pricing-tier">[ Elite ]</div>
+        <div class="pricing-name">Content Engine Elite</div>
+        <div class="pricing-price">$6,500</div>
+        <div class="pricing-context">Your complete marketing dept</div>
+        <div class="pricing-period">per month</div>
+        <ul class="pricing-features">
+          <li>Everything in Pro, plus:</li>
+          <li>Social media management</li>
+          <li>Guest research + coordination</li>
+          <li>Paid ad management</li>
+          <li>Quarterly brand strategy</li>
+          <li>Priority scheduling</li>
+        </ul>
+        <div class="pricing-commitment">Min 12-month commitment</div>
+        <a href="#cta" class="btn-primary">Get Started</a>
+      </div>
+    </div>
+
+    <div class="pilot-card reveal">
+      <div class="pilot-info">
+        <div class="pilot-price">$500</div>
+        <h3>The Content Engine Pilot</h3>
+        <p>Not sure yet? One filmed episode, 4 social clips, and a strategy debrief. See what your content could look like before committing to a retainer.</p>
+      </div>
+      <a href="#cta" class="btn-primary">Book the Pilot</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FINAL CTA ═════════════════════════════════ -->
+<section class="final-cta" id="cta">
+  <div class="container reveal">
+    <div class="section-tag section-tag--light">[ Let's Start ]</div>
+    <h2>22,031 brokers. Less than 5% create video. Be the one in your market who does.</h2>
+    <p>Book the $500 Content Engine Pilot. One filmed episode, 4 social clips, and a strategy session. If the content doesn't impress you, that's the end of it. No risk, no commitment.</p>
+    <a href="mailto:hello@olliesmarketing.com.au?subject=Content%20Engine%20Pilot%20-%20Mortgage%20Broker" class="btn-primary btn-primary--cream">Book Your $500 Pilot</a>
+    <div class="final-cta-price">$500 one-time · 1 episode · 4 clips · strategy debrief</div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a href="content-engine.html" class="footer-brand">[ Ollie's Marketing ]</a>
+      <ul class="footer-links">
+        <li><a href="content-engine.html">Content Engine</a></li>
+        <li><a href="https://instagram.com/olliesmarketing" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="mailto:hello@olliesmarketing.com.au">Email</a></li>
+      </ul>
+      <div class="footer-copy">&copy; 2026 Ollie's Marketing. Brisbane, QLD.</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ JAVASCRIPT ════════════════════════════════ -->
+<script>
+(function() {
+  'use strict';
+
+  // Nav scroll
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 80) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  }, { passive: true });
+
+  // Scroll reveal
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!prefersReduced) {
+    var reveals = document.querySelectorAll('.reveal');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(function(el) { observer.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('visible'); });
+  }
+
+  // Counter animation
+  function animateCounter(el) {
+    var target = parseInt(el.getAttribute('data-target'), 10);
+    if (isNaN(target)) return;
+    var duration = 2000;
+    var start = performance.now();
+    function update(now) {
+      var elapsed = now - start;
+      var progress = Math.min(elapsed / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(target * eased).toLocaleString();
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  }
+
+  if (!prefersReduced) {
+    var counters = document.querySelectorAll('.counter');
+    var counterObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(function(el) { counterObserver.observe(el); });
+  } else {
+    document.querySelectorAll('.counter').forEach(function(el) {
+      var t = parseInt(el.getAttribute('data-target'), 10);
+      el.textContent = isNaN(t) ? el.textContent : t.toLocaleString();
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
