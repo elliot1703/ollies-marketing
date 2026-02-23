@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Engine for Real Estate Agents — Ollie's Marketing | Video Content That Builds Referrals</title>
+    <meta name="description"
+        content="Property stills, drone footage, and social reels — one team, one shoot. Plus a dedicated studio to build your personal brand. Ollie's Marketing, Brisbane.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        /* ═══════════════════════════════════════════════
+     OLLIE'S MARKETING — REAL ESTATE VERTICAL
+     Pattern: Self-contained HTML (shared brand tokens)
+     ═══════════════════════════════════════════════ */
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --brown: #6B3A1E;
+            --cream: #FBF5EE;
+            --espresso: #2A1810;
+            --stone: #E8DDD3;
+            --terracotta: #C1553A;
+            --timber: #8B6F5C;
+            --linen: #F3EBE2;
+            --charcoal: #3D2E24;
+            --font-display: 'Sora', system-ui, sans-serif;
+            --font-body: 'DM Sans', system-ui, sans-serif;
+            --section-padding: clamp(5rem, 10vw, 8rem);
+            --side-padding: clamp(1.5rem, 6vw, 6rem);
+            --max-width: 1200px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--espresso);
+            background: var(--cream);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            font-size: clamp(1rem, 1.1vw, 1.125rem);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--side-padding);
+        }
+
+        /* ═══ NAVIGATION ════════════════════════════════ */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem var(--side-padding);
+            background: transparent;
+            transition: background 0.4s ease, box-shadow 0.4s ease, padding 0.4s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(251, 245, 238, 0.97);
+            box-shadow: 0 1px 0 var(--stone);
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        .nav-brand {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--cream);
+            text-decoration: none;
+            transition: color 0.4s ease;
+        }
+
+        nav.scrolled .nav-brand {
+            color: var(--brown);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--cream);
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.2s ease, color 0.4s ease;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+        }
+
+        nav.scrolled .nav-links a {
+            color: var(--charcoal);
+        }
+
+        .nav-cta {
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--brown);
+            background: var(--cream);
+            padding: 0.65rem 1.4rem;
+            border-radius: 8px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.4s ease, color 0.4s ease;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(42, 24, 16, 0.15);
+        }
+
+        nav.scrolled .nav-cta {
+            background: var(--terracotta);
+            color: var(--cream);
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--cream);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled .nav-toggle span {
+            background: var(--charcoal);
+        }
+
+        /* ═══ SHARED ELEMENTS ═══════════════════════════ */
+        .section-tag {
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--terracotta);
+            margin-bottom: 1.5rem;
+        }
+
+        .section-tag--light {
+            color: var(--stone);
+        }
+
+        .btn-primary {
+            display: inline-block;
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-decoration: none;
+            background: var(--terracotta);
+            color: var(--cream);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(193, 85, 58, 0.3);
+        }
+
+        .btn-primary--cream {
+            background: var(--cream);
+            color: var(--brown);
+        }
+
+        .btn-primary--cream:hover {
+            box-shadow: 0 6px 20px rgba(251, 245, 238, 0.3);
+        }
+
+        .btn-ghost {
+            display: inline-block;
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--cream);
+            border: 2px solid rgba(251, 245, 238, 0.3);
+            padding: calc(1rem - 2px) calc(2rem - 2px);
+            border-radius: 8px;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--cream);
+            transform: translateY(-2px);
+        }
+
+        /* ═══ HERO ══════════════════════════════════════ */
+        .hero {
+            min-height: 100vh;
+            background: var(--brown);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 30% 70%, rgba(193, 85, 58, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 30%, rgba(251, 245, 238, 0.04) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+            padding-top: 8rem;
+            padding-bottom: 5rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-breadcrumb {
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .hero-breadcrumb a {
+            color: var(--stone);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .hero-breadcrumb a:hover {
+            color: var(--cream);
+        }
+
+        .hero-breadcrumb span {
+            color: var(--timber);
+            margin: 0 0.5rem;
+        }
+
+        .hero-breadcrumb .current {
+            color: var(--terracotta);
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.25rem, 5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.08;
+            letter-spacing: -0.02em;
+            color: var(--cream);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 em {
+            font-style: normal;
+            color: var(--terracotta);
+        }
+
+        .hero-sub {
+            font-size: clamp(1.1rem, 1.35vw, 1.25rem);
+            line-height: 1.5;
+            color: var(--stone);
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* ═══ THE PROBLEM ═══════════════════════════════ */
+        .problem {
+            background: var(--cream);
+            padding: var(--section-padding) 0;
+        }
+
+        .problem-header {
+            max-width: 700px;
+            margin-bottom: 3rem;
+        }
+
+        .problem-header h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: var(--espresso);
+        }
+
+        .problem-header p {
+            margin-top: 1rem;
+            color: var(--timber);
+            font-size: clamp(1.05rem, 1.2vw, 1.15rem);
+            max-width: 600px;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .problem-card {
+            background: var(--linen);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .problem-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--espresso);
+            margin-bottom: 0.5rem;
+        }
+
+        .problem-card p {
+            font-size: 0.9rem;
+            color: var(--timber);
+            line-height: 1.5;
+        }
+
+        /* ═══ HOW IT WORKS ═════════════════════════════ */
+        .how {
+            background: var(--linen);
+            padding: var(--section-padding) 0;
+        }
+
+        .how-header {
+            max-width: 700px;
+            margin-bottom: 3rem;
+        }
+
+        .how-header h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: var(--espresso);
+        }
+
+        .how-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .how-step {
+            background: var(--cream);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .step-number {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            color: var(--terracotta);
+            margin-bottom: 1rem;
+        }
+
+        .how-step h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--espresso);
+            margin-bottom: 0.5rem;
+        }
+
+        .how-step p {
+            font-size: 0.9rem;
+            color: var(--timber);
+            line-height: 1.5;
+        }
+
+        /* ═══ THE STUDIO ════════════════════════════════ */
+        .studio {
+            background: var(--espresso);
+            padding: var(--section-padding) 0;
+            color: var(--cream);
+        }
+
+        .studio-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .studio-content h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+        }
+
+        .studio-content p {
+            color: var(--stone);
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .studio-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .studio-images img {
+            width: 100%;
+            border-radius: 12px;
+            object-fit: cover;
+            aspect-ratio: 1;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .studio-images img:first-child {
+            grid-column: span 2;
+            aspect-ratio: 16/9;
+        }
+
+        /* ═══ RESULTS ══════════════════════════════════ */
+        .results {
+            background: var(--brown);
+            padding: var(--section-padding) 0;
+        }
+
+        .results-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .results-header h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: var(--cream);
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-block {
+            padding: 1rem;
+        }
+
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            color: var(--cream);
+            line-height: 1;
+            margin-bottom: 0.75rem;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: var(--stone);
+            line-height: 1.4;
+            max-width: 260px;
+            margin: 0 auto;
+        }
+
+        /* ═══ PRICING ═══════════════════════════════════ */
+        .pricing {
+            background: var(--cream);
+            padding: var(--section-padding) 0;
+        }
+
+        .pricing-header {
+            max-width: 700px;
+            margin-bottom: 3.5rem;
+            text-align: center;
+            margin-inline: auto;
+        }
+
+        .pricing-header h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: var(--espresso);
+        }
+
+        .pricing-header p {
+            margin-top: 1rem;
+            color: var(--timber);
+            font-size: clamp(1.05rem, 1.2vw, 1.15rem);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .pricing-card {
+            background: var(--linen);
+            border-radius: 12px;
+            padding: 2.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(42, 24, 16, 0.08);
+        }
+
+        .pricing-card--featured {
+            background: var(--brown);
+            color: var(--cream);
+            box-shadow: 0 4px 20px rgba(42, 24, 16, 0.15);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            right: 24px;
+            background: var(--terracotta);
+            color: var(--cream);
+            font-family: var(--font-display);
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+        }
+
+        .pricing-tier {
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--terracotta);
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-card--featured .pricing-tier {
+            color: var(--stone);
+        }
+
+        .pricing-name {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--espresso);
+            margin-bottom: 1rem;
+        }
+
+        .pricing-card--featured .pricing-name {
+            color: var(--cream);
+        }
+
+        .pricing-price {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 3vw, 2.5rem);
+            font-weight: 700;
+            color: var(--espresso);
+            line-height: 1;
+            margin-bottom: 0.25rem;
+        }
+
+        .pricing-card--featured .pricing-price {
+            color: var(--cream);
+        }
+
+        .pricing-period {
+            font-size: 0.85rem;
+            color: var(--timber);
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-card--featured .pricing-period {
+            color: var(--stone);
+        }
+
+        .pricing-save {
+            font-size: 0.85rem;
+            color: var(--terracotta);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-card--featured .pricing-save {
+            color: var(--terracotta);
+            background-color: var(--cream);
+            padding: 2px 8px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        .pricing-features li {
+            font-size: 0.9rem;
+            line-height: 1.4;
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--charcoal);
+        }
+
+        .pricing-card--featured .pricing-features li {
+            color: var(--stone);
+        }
+
+        .pricing-features li::before {
+            content: '\2713';
+            position: absolute;
+            left: 0;
+            color: var(--terracotta);
+            font-weight: 700;
+        }
+
+        .pricing-card--featured .pricing-features li::before {
+            color: var(--cream);
+        }
+
+        .pricing-card .btn-primary {
+            text-align: center;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        .pricing-card--featured .btn-primary {
+            background: var(--cream);
+            color: var(--brown);
+        }
+
+        .pricing-card--featured .btn-primary:hover {
+            box-shadow: 0 6px 20px rgba(251, 245, 238, 0.3);
+        }
+
+        /* ═══ FAQ ══════════════════════════════════════ */
+        .faq {
+            background: var(--linen);
+            padding: var(--section-padding) 0;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .faq-header h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: var(--espresso);
+        }
+
+        .faq-list {
+            list-style: none;
+        }
+
+        .faq-list li {
+            background: var(--cream);
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .faq-list h4 {
+            color: var(--espresso);
+            margin-bottom: 0.5rem;
+            font-family: var(--font-display);
+            font-size: 1rem;
+        }
+
+        .faq-list p {
+            font-size: 0.9rem;
+            color: var(--timber);
+            line-height: 1.5;
+        }
+
+        /* ═══ FINAL CTA ═════════════════════════════════ */
+        .final-cta {
+            background: var(--espresso);
+            padding: var(--section-padding) 0;
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4.5vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: var(--cream);
+            max-width: 750px;
+            margin: 0 auto 1rem;
+        }
+
+        .final-cta p {
+            color: var(--stone);
+            font-size: clamp(1.05rem, 1.2vw, 1.15rem);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.5;
+        }
+
+        .final-cta-contact {
+            margin-top: 1.25rem;
+            color: var(--timber);
+            font-size: 0.9rem;
+        }
+
+        .final-cta-contact a {
+            color: var(--stone);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .final-cta-contact a:hover {
+            color: var(--cream);
+        }
+
+        /* ═══ FOOTER ════════════════════════════════════ */
+        footer {
+            background: var(--espresso);
+            border-top: 1px solid rgba(232, 221, 211, 0.08);
+            padding: 3rem 0;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--cream);
+            text-decoration: none;
+        }
+
+        .footer-copy {
+            font-size: 0.8rem;
+            color: var(--timber);
+            width: 100%;
+            text-align: center;
+            margin-top: 1rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(232, 221, 211, 0.1);
+        }
+
+        /* ═══ SCROLL REVEAL ═════════════════════════════ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ═══ RESPONSIVE ════════════════════════════════ */
+        @media (max-width: 1024px) {
+
+            .problem-grid,
+            .pricing-grid,
+            .how-grid,
+            .results-grid,
+            .studio-container {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card--featured {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-right {
+                display: none;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: clamp(2rem, 7.5vw, 2.75rem);
+            }
+
+            .studio-container {
+                gap: 2rem;
+            }
+
+            .results-grid {
+                gap: 2.5rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+
+            html {
+                scroll-behavior: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══ NAVIGATION ════════════════════════════════ -->
+    <nav id="nav">
+        <a href="content-engine.html" class="nav-brand">[ Ollie's Marketing ]</a>
+        <button class="nav-toggle" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="#how">How it Works</a></li>
+                <li><a href="#pricing">Packages</a></li>
+            </ul>
+            <a href="#cta" class="nav-cta">Book a Shoot</a>
+        </div>
+    </nav>
+
+    <!-- ═══ HERO ══════════════════════════════════════ -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content reveal">
+                <div class="hero-breadcrumb">
+                    <a href="content-engine.html">Content Engine</a>
+                    <span>/</span>
+                    <span class="current">Real Estate</span>
+                </div>
+                <div class="section-tag section-tag--light">[ For Real Estate Agents ]</div>
+                <h1>Listings with video get 403% more inquiries. <em>Yours should too.</em></h1>
+                <p class="hero-sub">One team handles your property stills, drone footage, and social reels in a single
+                    shoot. Then our studio builds the personal brand that wins you your next listing.</p>
+                <div class="hero-ctas">
+                    <a href="#pricing" class="btn-primary btn-primary--cream">View Packages</a>
+                    <a href="#how" class="btn-ghost">See How It Works</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ THE PROBLEM ═══════════════════════════════ -->
+    <section class="problem">
+        <div class="container">
+            <div class="problem-header reveal">
+                <div class="section-tag">[ The Problem ]</div>
+                <h2>You already know content matters. Here's what's actually costing you.</h2>
+            </div>
+
+            <div class="problem-grid reveal">
+                <div class="problem-card">
+                    <h3>Three Vendors for One Listing</h3>
+                    <p>You're coordinating a photographer, a drone operator, and a videographer for every property.
+                        Three invoices, three schedules, three different quality standards. That's not marketing — it's
+                        project management.</p>
+                </div>
+                <div class="problem-card">
+                    <h3>Your Brand is Invisible</h3>
+                    <p>All your marketing budget goes to property media. Meanwhile, the top agents in your market are
+                        building personal brands that win listings before the pitch even starts.</p>
+                </div>
+                <div class="problem-card">
+                    <h3>The Market Won't Wait</h3>
+                    <p>In a hot market, every day without property media online is a day potential buyers scroll past
+                        your listing. You need deliverables in days, not weeks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ HOW IT WORKS ═══════════════════════════════ -->
+    <section class="how" id="how">
+        <div class="container">
+            <div class="how-header reveal">
+                <div class="section-tag">[ How It Works ]</div>
+                <h2>Three steps. One team. Every deliverable handled.</h2>
+            </div>
+
+            <div class="how-grid reveal">
+                <div class="how-step">
+                    <div class="step-number">[ 01 ]</div>
+                    <h3>We Shoot the Property</h3>
+                    <p>Book a session. We bring stills, drone, and video to your listing in one visit. No coordinating
+                        three separate freelancers — one team covers everything.</p>
+                </div>
+                <div class="how-step">
+                    <div class="step-number">[ 02 ]</div>
+                    <h3>We Edit and Deliver</h3>
+                    <p>Professional editing, colour grading, and reel production — returned within 48 hours so you can
+                        list while the market's hot.</p>
+                </div>
+                <div class="how-step">
+                    <div class="step-number">[ 03 ]</div>
+                    <h3>We Build Your Brand</h3>
+                    <p>Come into our studio once a month. Record market updates and thought leadership. We cut it into
+                        weeks of social content that makes you the agent everyone in your area follows.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ THE STUDIO ════════════════════════════════ -->
+    <section class="studio" id="studio">
+        <div class="container studio-container">
+            <div class="studio-content reveal">
+                <div class="section-tag section-tag--light">[ The Studio ]</div>
+                <h2>This is what separates you from every other agent.</h2>
+                <p>Any photographer can shoot a house. We also build the brand behind the agent. Our dedicated studio is
+                    fitted with professional podcast equipment, warm lighting, and a production team that makes you look
+                    like the authority you are.</p>
+                <p>One session per month. We handle filming, editing, and distribution. You get weeks of market updates,
+                    Q&As, and thought leadership reels — the kind of content that builds referrals and wins listings
+                    before you even pitch.</p>
+                <a href="#cta" class="btn-primary" style="margin-top:1rem;">Ask About Studio Retainers</a>
+            </div>
+            <div class="studio-images reveal">
+                <img src="studio-wide.jpeg" alt="Ollie's Marketing podcast studio with professional lighting and timber slat wall">
+                <img src="studio-podcast.jpeg" alt="Two people recording a podcast conversation in the Ollie's studio">
+                <img src="studio-microphone.jpeg" alt="Professional Rode microphone setup with studio headphones">
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ RESULTS ════════════════════════════════════ -->
+    <section class="results">
+        <div class="container">
+            <div class="results-header reveal">
+                <div class="section-tag section-tag--light">[ The Numbers ]</div>
+                <h2>Why the top agents invest in content.</h2>
+            </div>
+            <div class="results-grid reveal">
+                <div class="stat-block">
+                    <div class="stat-number">403%</div>
+                    <div class="stat-label">More listing inquiries when video is part of the property marketing</div>
+                </div>
+                <div class="stat-block">
+                    <div class="stat-number">48hrs</div>
+                    <div class="stat-label">Average turnaround from shoot day to edited deliverables in your inbox</div>
+                </div>
+                <div class="stat-block">
+                    <div class="stat-number">1 session</div>
+                    <div class="stat-label">Per month in our studio becomes weeks of personal brand content across your
+                        socials</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ PRICING ════════════════════════════════════ -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="pricing-header reveal">
+                <div class="section-tag">[ Pricing & Packages ]</div>
+                <h2>Clear pricing. No hidden fees.</h2>
+                <p>Choose the package that fits your listing. Every shoot includes professional editing and fast
+                    turnaround.</p>
+            </div>
+
+            <div class="pricing-grid reveal">
+
+                <div class="pricing-card">
+                    <div class="pricing-tier">Starter</div>
+                    <h3 class="pricing-name">Engine</h3>
+                    <div class="pricing-price">$500</div>
+                    <div class="pricing-period">per property shoot</div>
+                    <ul class="pricing-features">
+                        <li>1 location (on-site)</li>
+                        <li>2 hours on-site</li>
+                        <li>5-10 edited stills</li>
+                        <li>Professional colour grading</li>
+                    </ul>
+                    <a href="#cta" class="btn-primary">Book The Engine</a>
+                </div>
+
+                <div class="pricing-card pricing-card--featured">
+                    <div class="pricing-badge">Most Popular</div>
+                    <div class="pricing-tier">Premium Listing</div>
+                    <h3 class="pricing-name">Growth</h3>
+                    <div class="pricing-price">$1,200</div>
+                    <div class="pricing-period">per property shoot</div>
+                    <ul class="pricing-features">
+                        <li>1 location (on-site)</li>
+                        <li>2-3 hours on-site</li>
+                        <li>5-10 edited stills</li>
+                        <li>10-15 sec property reel</li>
+                        <li>Drone video footage included</li>
+                    </ul>
+                    <a href="#cta" class="btn-primary">Book The Growth</a>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-tier">High Volume</div>
+                    <h3 class="pricing-name">Enterprise</h3>
+                    <div class="pricing-price">$5,000</div>
+                    <div class="pricing-period">6 properties</div>
+                    <div class="pricing-save">Save $2,200 vs booking individually</div>
+                    <ul class="pricing-features">
+                        <li>6 locations (multi-day)</li>
+                        <li>18 hours on-site total</li>
+                        <li>30-60 edited stills</li>
+                        <li>6 x property reels</li>
+                        <li>Drone footage at every location</li>
+                        <li>Studio session included</li>
+                    </ul>
+                    <a href="#cta" class="btn-primary">Enquire About Enterprise</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ FAQ ════════════════════════════════════════ -->
+    <section class="faq">
+        <div class="container faq-container">
+            <div class="faq-header reveal">
+                <div class="section-tag">[ Common Questions ]</div>
+                <h2>Before you book.</h2>
+            </div>
+            <ul class="faq-list reveal">
+                <li>
+                    <h4>I already have a property photographer.</h4>
+                    <p>Most agents do — for stills. We cover stills, drone, and social reels in one shoot with one team.
+                        No more juggling three freelancers. And the studio sessions for your personal brand? That's the
+                        part no photographer offers.</p>
+                </li>
+                <li>
+                    <h4>I'm not great on camera.</h4>
+                    <p>That's exactly why the studio exists. Professional lighting, a relaxed setting, and a team that
+                        handles everything. We've filmed plenty of people who said the same thing — and they looked like
+                        naturals.</p>
+                </li>
+                <li>
+                    <h4>How fast do I get my deliverables?</h4>
+                    <p>48 hours for standard turnaround. We know a hot market doesn't wait — your property media
+                        shouldn't either.</p>
+                </li>
+                <li>
+                    <h4>What if I just need one listing shot?</h4>
+                    <p>The Engine package at $500 is built for exactly that. No commitment, no retainer. Book when you
+                        need it.</p>
+                </li>
+                <li>
+                    <h4>What about drone restrictions and weather?</h4>
+                    <p>All drone flights are weather and airspace dependent — safety first, always. If conditions
+                        prohibit flying on shoot day, we'll reschedule the aerial component at no extra cost.</p>
+                </li>
+                <li>
+                    <h4>Are there any extra fees?</h4>
+                    <p>Any required venue permits are billed at cost. Travel outside the standard Brisbane metro area may
+                        incur a small travel fee — always quoted before you commit.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ═══ FINAL CTA ═════════════════════════════════ -->
+    <section class="final-cta" id="cta">
+        <div class="container reveal">
+            <div class="section-tag section-tag--light">[ Get Started ]</div>
+            <h2>Ready to stand out in your market?</h2>
+            <p>Book a property shoot or ask about studio retainers for your personal brand. One conversation and we'll
+                have you sorted.</p>
+            <a href="mailto:conrad@olliesmarketing.com.au" class="btn-primary btn-primary--cream">Book Your Shoot</a>
+            <div class="final-cta-contact">
+                Or call directly: <a href="tel:+61435911904">0435 911 904</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ FOOTER ════════════════════════════════════ -->
+    <footer>
+        <div class="container">
+            <div class="footer-inner">
+                <a href="content-engine.html" class="footer-brand">[ Ollie's Marketing ]</a>
+            </div>
+            <div class="footer-copy">
+                &copy; 2026 Ollie's Marketing. Brisbane, Gold Coast, Sunshine Coast, Byron Bay.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+        // Nav styling on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+
+</html>
