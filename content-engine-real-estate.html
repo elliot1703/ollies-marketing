@@ -382,6 +382,68 @@
             line-height: 1.5;
         }
 
+        /* ═══ PORTFOLIO ════════════════════════════════ */
+        .portfolio {
+            background: var(--espresso);
+            padding: var(--section-padding) 0;
+        }
+
+        .portfolio-header {
+            max-width: 700px;
+            margin-bottom: 2.5rem;
+        }
+
+        .portfolio-header h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: var(--cream);
+        }
+
+        .portfolio-header p {
+            margin-top: 1rem;
+            color: var(--stone);
+            font-size: clamp(1.05rem, 1.2vw, 1.15rem);
+        }
+
+        .portfolio-hero-img {
+            width: 100%;
+            border-radius: 12px;
+            object-fit: cover;
+            aspect-ratio: 21/9;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .portfolio-grid img {
+            width: 100%;
+            border-radius: 12px;
+            object-fit: cover;
+            aspect-ratio: 16/10;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-grid img:hover {
+            transform: scale(1.02);
+        }
+
+        .portfolio-caption {
+            text-align: center;
+            margin-top: 2rem;
+            color: var(--timber);
+            font-size: 0.85rem;
+            font-style: italic;
+        }
+
         /* ═══ HOW IT WORKS ═════════════════════════════ */
         .how {
             background: var(--linen);
@@ -857,7 +919,8 @@
             .pricing-grid,
             .how-grid,
             .results-grid,
-            .studio-container {
+            .studio-container,
+            .portfolio-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -966,6 +1029,25 @@
                         your listing. You need deliverables in days, not weeks.</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- ═══ PORTFOLIO ═════════════════════════════════ -->
+    <section class="portfolio">
+        <div class="container">
+            <div class="portfolio-header reveal">
+                <div class="section-tag section-tag--light">[ Our Work ]</div>
+                <h2>This is what professional property media looks like.</h2>
+                <p>Real shoots. Real listings. The kind of content that stops the scroll and gets buyers through the door.</p>
+            </div>
+            <img src="portfolio/pool-skyline.jpg" alt="Wilston property with infinity pool overlooking Brisbane CBD skyline" class="portfolio-hero-img reveal">
+            <div class="portfolio-grid reveal">
+                <img src="portfolio/interior-fireplace.jpg" alt="Open-plan entertaining area with stone fireplace and louvre windows">
+                <img src="portfolio/bedroom-views.jpg" alt="Master bedroom with panoramic Brisbane city views">
+                <img src="portfolio/exterior-entertaining.jpg" alt="Modern covered outdoor area with stone feature wall and garden">
+                <img src="portfolio/backyard-pool.jpg" alt="Elevated backyard with pool, timber deck and Brisbane skyline">
+            </div>
+            <p class="portfolio-caption reveal">Recent shoots across Brisbane — stills, drone, and video all handled by one team.</p>
         </div>
     </section>
 
