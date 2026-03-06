@@ -1,0 +1,9 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/content-engine-v2.html" },
+    { "source": "/content-engine", "destination": "/content-engine-v2.html" },
+    { "source": "/content-engine/mortgage-brokers", "destination": "/content-engine-mortgage-brokers.html" },
+    { "source": "/content-engine/real-estate", "destination": "/content-engine-real-estate.html" },
+    { "source": "/portal", "destination": "/portal.html" }
+  ]
+}
